@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EduMain</title>
     <link rel="stylesheet" href="login.css">
-    <title>Document</title>
 </head>
 <body>
-
-    <div class="mainBox">
-        <h3 class="text1">Inicia sessió</h3>
-        <h5 class="text2">En cas de que no sigui la primera vegada</h5>
-        <input class="emailInput" type="email" placeholder="Correu electronic">
-        <a class="loginButton">Iniciar sessió</a>
-        <a class="createAccButton" href="registerPage.html">Crear compte</a>
+    <div class="container">
+        <h1>Inicia sesión</h1>
+        <form action="php/login.php" method="POST">
+            <input type="email" name="correo" placeholder="Correo electrónico" required><br><br>
+            <input type="password" name="contraseña" placeholder="Contraseña" required><br><br>
+            <input type="submit" value="Iniciar sesión">
+        </form>
+        <a href="register.html" class="createAccButton">Crear cuenta</a>
     </div>
-
 </body>
 </html>

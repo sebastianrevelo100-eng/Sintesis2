@@ -1,17 +1,19 @@
-/* login.css */
+/* crearClase.css */
 
 /* Fondo y tipografía general */
 body {
-    background-color: rgb(118, 118, 255);
+    background-color: rgb(118, 118, 255); /* fondo violeta */
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* Caja central del login */
+/* Caja central */
 .container {
     width: 400px;
     margin: 80px auto;
     padding: 30px;
-    background-color: rgb(225, 225, 225); /* Gris claro */
+    background-color: rgb(225, 225, 225); /* gris claro */
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -21,12 +23,12 @@ body {
 .container h1 {
     font-size: 28px;
     margin-bottom: 20px;
-    color: #000; /* Negro */
+    color: #000;
 }
 
-/* Inputs */
-.container input[type="email"],
-.container input[type="password"] {
+/* Inputs y textarea */
+.container input[type="text"],
+.container textarea {
     width: 90%;
     padding: 10px;
     margin-bottom: 15px;
@@ -35,7 +37,7 @@ body {
     border-radius: 10px;
 }
 
-/* Botón de login */
+/* Botón de enviar */
 .container input[type="submit"] {
     width: 95%;
     padding: 10px;
@@ -48,20 +50,6 @@ body {
 }
 
 .container input[type="submit"]:hover {
-    background-color: rgb(154, 154, 181); /* Hover violeta */
+    background-color: rgb(154, 154, 181);
     transition: 0.5s;
-}
-
-/* Enlace para crear cuenta */
-.createAccButton {
-    display: block;
-    margin-top: 15px;
-    font-size: 14px;
-    text-decoration: none;
-    color: #000;
-}
-
-.createAccButton:hover {
-    color: rgb(154, 154, 181);
-    transition: 0.3s;
 }
