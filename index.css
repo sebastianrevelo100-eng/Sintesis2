@@ -1,0 +1,104 @@
+/* ===== Estilos para la página de inicio - estilo EduMain ===== */
+
+/* Body y fondo */
+body {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: rgb(225, 225, 225);
+    height: 150px;
+    width: 100vw;
+    margin-top: -35px;
+    line-height: 150px; /* centra verticalmente el texto */
+}
+
+/* Título principal */
+.eduMain {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Botones - estilo general */
+.button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    text-decoration: none;
+    color: #000000;
+    border-radius: 10px;
+    border: 2px solid rgb(225, 225, 225);
+    padding: 10px 20px;
+    background-color: rgb(225, 225, 225);
+    transition: 0.5s;
+    display: inline-block;
+    margin: 10px;
+}
+
+/* Hover para todos los botones */
+.button:hover {
+    background-color: rgb(188, 187, 255);
+}
+
+/* Botones específicos con colores distintos */
+.iniciodesesion {
+    background-color: rgb(52, 152, 219); /* azul */
+    color: white;
+}
+
+.loginButton:hover {
+    background-color: rgb(41, 128, 185);
+}
+
+.registrarse {
+    background-color: rgb(46, 204, 113); /* verde */
+    color: white;
+}
+
+.registrarse:hover {
+    background-color: rgb(39, 174, 96);
+}
+
+.acceder {
+    background-color: rgb(241, 196, 15); /* amarillo */
+    color: #333;
+}
+
+.acceder:hover {
+    background-color: rgb(212, 172, 13);
+}
+
+/* Sección de funciones */
+.Caracteristicas {
+    margin-top: 40px;
+    background-color: rgb(245, 245, 245);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: left;
+}
+
+.Caracteristicas h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.Caracteristicas ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.features li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #555;
+}
