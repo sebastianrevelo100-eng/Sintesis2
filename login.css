@@ -1,4 +1,14 @@
 /* login.css */
+/* CAMBIOS */
+/*
+14 12 2025
+he puesto una classe para cada uno de los inputs y el select y cambiado la decoracion de estos (correo, contraseña)
+cambiado el fondo ambos de la pagina y de la parte principal
+cambiado el titulo de la pagina
+
+15 12 2025
+
+
 
 /* Fondo y tipografía general */
 body {
@@ -11,32 +21,55 @@ body {
     width: 400px;
     margin: 80px auto;
     padding: 30px;
-    background-color: rgb(225, 225, 225); /* Gris claro */
+    background-color: rgb(48, 48, 48);
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 20px 20px 18px rgba(0, 0, 0, 0.5);
 }
 
 /* Título */
-.container h1 {
+.textoLogin{
     font-size: 28px;
     margin-bottom: 20px;
-    color: #000; /* Negro */
+    color: #ffffff;
+}
+
+.textoLogin:hover{
+    transition: 0.3s;
+    transform: scale(1.2);
 }
 
 /* Inputs */
-.container input[type="email"],
-.container input[type="password"] {
+.inputCorreo{
     width: 90%;
     padding: 10px;
     margin-bottom: 15px;
     font-size: 16px;
-    border: 2px solid rgb(118, 118, 255);
+    border: 2px solid rgb(48, 48, 48);
     border-radius: 10px;
 }
 
+.inputCorreo:hover{
+    transition: 0.2s;
+    border-color: rgb(118, 118, 255);
+}
+
+.inputContraseña{
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 2px solid rgb(48, 48, 48);
+    border-radius: 10px;
+}
+
+.inputContraseña:hover{
+    transition: 0.2s;
+    border-color: rgb(118, 118, 255);
+}
+
 /* Botón de login */
-.container input[type="submit"] {
+.botonSubmit{
     width: 95%;
     padding: 10px;
     font-size: x-large;
@@ -47,9 +80,10 @@ body {
     color: #000;
 }
 
-.container input[type="submit"]:hover {
-    background-color: rgb(154, 154, 181); /* Hover violeta */
-    transition: 0.5s;
+.botonSubmit:hover{
+    color: #ffffff;
+    background-color: rgb(48, 48, 48);
+    transition: 0.3s;
 }
 
 /* Enlace para crear cuenta */
@@ -58,10 +92,10 @@ body {
     margin-top: 15px;
     font-size: 14px;
     text-decoration: none;
-    color: #000;
+    color: #ffffff;
 }
 
 .createAccButton:hover {
-    color: rgb(154, 154, 181);
+    color: rgb(118, 118, 255);
     transition: 0.3s;
 }

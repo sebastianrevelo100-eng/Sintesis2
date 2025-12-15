@@ -11,6 +11,8 @@ $nombre = $_SESSION['nombre'];
 $rol = $_SESSION['rol'];
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
