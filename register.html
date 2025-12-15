@@ -8,17 +8,19 @@
 </head>
 <body>
     <div class="container">
-        <h1>Registro de usuario</h1>
+        <h1 class="textoRegistro">Registro de usuario</h1>
         <form action="php/register.php" method="POST">
-            <input type="text" name="nombre" placeholder="Nombre" required><br><br>
-            <input type="email" name="correo" placeholder="Correo" required><br><br>
-            <input type="password" name="contraseña" placeholder="Contraseña" required><br><br>
-            <select name="rol">
+            <input class="inputNombre" type="text" placeholder="Nombre" required><br><br>
+            <input class="inputCorreo" type="email" placeholder="Correo" required><br><br>
+            <input class="inputContraseña" type="password" placeholder="Contraseña" required><br><br>
+            <select class="seleccionRol">
                 <option value="alumno">Alumno</option>
                 <option value="profesor">Profesor</option>
             </select><br><br>
-            <input type="submit" value="Registrarse">
+            <input class="botonSubmit" type="submit" value="Registrarse">
         </form>
     </div>
 </body>
 </html>
+
+
