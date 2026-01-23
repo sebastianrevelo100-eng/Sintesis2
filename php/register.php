@@ -7,7 +7,7 @@ if(isset($_POST['nombre']) && isset($_POST['correo']) && isset($_POST['contrase�
 
     $nombre = $_POST['nombre'];
     $correo = $_POST['correo'];
-    $contraseña = password_hash($_POST['contraseña'], PASSWORD_DEFAULT);
+    $contraseña = $_POST['contraseña'];
     $rol = $_POST['rol'];
 
     // Insertar usuario en la base de datos

@@ -11,6 +11,8 @@ $nombre = $_SESSION['nombre'];
 $rol = $_SESSION['rol'];
 ?>
 
+<!-- uri revisa la mainpage -->
+<!-- karma restaurant -->
 
 
 <!DOCTYPE html>
@@ -32,6 +34,7 @@ $rol = $_SESSION['rol'];
             <li><a href="php/logout.php">Cerrar sesión</a></li>
         </ul>
     </div>
+
 
 
     

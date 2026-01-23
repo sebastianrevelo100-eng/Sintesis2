@@ -35,12 +35,6 @@ body {
     color: #ffffff; 
 }
 
-.textoRegistro:hover{
-    transition: 0.2s;
-    transform: scale(1.2);
-}
-
-
 .inputNombre{
     width: 90%;
     padding: 10px;
@@ -114,3 +108,4 @@ body {
     background-color: rgb(48, 48, 48);
     transition: 0.3s;
 }
+

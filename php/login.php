@@ -15,12 +15,12 @@ if(isset($_POST['correo']) && isset($_POST['contraseña'])) {
         $row = $result->fetch_assoc();
 
         if(password_verify($contraseña, $row['contraseña'])) {
-            // Guardar datos del usuario en la sesión
+           
             $_SESSION['id'] = $row['id'];
             $_SESSION['nombre'] = $row['nombre'];
             $_SESSION['rol'] = $row['rol'];
 
-            // Redirigir a la página principal
+            
             header("Location: ../mainPage.php");
             exit();
         } else {
