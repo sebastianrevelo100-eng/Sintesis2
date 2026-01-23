@@ -11,8 +11,6 @@ $nombre = $_SESSION['nombre'];
 $rol = $_SESSION['rol'];
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,9 +29,15 @@ $rol = $_SESSION['rol'];
             <?php endif; ?>
             <li><a href="php/logout.php">Cerrar sesión</a></li>
         </ul>
+<?php if($rol == 'alumno'): ?>
+<form action="php/unirse.php" method="POST">
+    <input type="text" name="codigo" placeholder="Código de clase" required>
+    <input type="submit" value="Unirse a la clase">
+</form>
+<?php endif; ?>
+
     </div>
-
-
+    </div>
     
 </body>
 </html>

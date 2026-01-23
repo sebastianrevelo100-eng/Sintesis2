@@ -14,7 +14,7 @@ if(isset($_POST['correo']) && isset($_POST['contraseña'])) {
     if($result->num_rows > 0) {
         $row = $result->fetch_assoc();
 
-        if(password_verify($contraseña, $row['contraseña'])) {
+        if(($contraseña == $row['contraseña'])) {
             // Guardar datos del usuario en la sesión
             $_SESSION['id'] = $row['id'];
             $_SESSION['nombre'] = $row['nombre'];
