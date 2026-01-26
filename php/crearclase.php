@@ -15,7 +15,9 @@ if(isset($_POST['nombre'])){
     $descripcion = $conn->real_escape_string($_POST['descripcion']);
     $profesor_id = $_SESSION['id'];
 
-    $sql = "INSERT INTO clases (nombre, profesor_id, descripcion) VALUES ('$nombre', '$profesor_id', '$descripcion')";
+    $codigo = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 0, 6);
+    $sql = "INSERT INTO clases (nombre, descripcion, profesor_id, codigo) VALUES ('$nombre', '$descripcion', '$profesor_id', '$codigo')";
+
 
     if($conn->query($sql) === TRUE){
         echo "Clase creada correctamente. <a href='../mainPage.php'>Volver al menú</a>";
