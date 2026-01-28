@@ -2,41 +2,26 @@
 session_start();
 include 'conexion.php';
 
-$alumno_id = $_SESSION['id']; // el que está logueado
-?>
+$alumno_id = $_SESSION['id'];
+$codigo = $_POST['codigo'];
 
-<h2>Unirse a clase</h2>
-<form action="unirse.php" method="POST">
-    <input type="text" name="codigo" placeholder="Escribe el código de la clase" required>
-    <input type="submit" value="Unirse">
-</form>
+// buscar la clase por el codigo
+$sql = "SELECT * FROM clases WHERE codigo='$codigo'";
+$res = $conn->query($sql);
 
-<?php
-if(isset($_POST['codigo'])) {
-    $codigo = $_POST['codigo'];
+if($res && $res->num_rows > 0){
+    $clase = $res->fetch_assoc();
+    $clase_id = $clase['id'];
 
-    // buscamos la clase por código
-    $sql = "SELECT * FROM clases WHERE codigo='$codigo'";
-    $res = $conn->query($sql);
+    // meter al alumno en la clase
+    $conn->query("INSERT INTO alumnos_clases (alumno_id, clase_id) VALUES ('$alumno_id','$clase_id')");
+    
+    header("Location: ../mainPage.php");
+    exit();
 
-    if($res->num_rows > 0) {
-        $clase = $res->fetch_assoc();
-        $clase_id = $clase['id'];
-
-        // verificamos si ya está inscrito
-        $check = "SELECT * FROM alumnos_clases WHERE alumno_id='$alumno_id' AND clase_id='$clase_id'";
-        $res_check = $conn->query($check);
-
-        if($res_check->num_rows == 0){
-            // lo inscribimos
-            $sql_insert = "INSERT INTO alumnos_clases (alumno_id, clase_id) VALUES ('$alumno_id', '$clase_id')";
-            $conn->query($sql_insert);
-            echo "<p style='color:green;'>Te uniste a la clase ".$clase['nombre']." ✅</p>";
-        } else {
-            echo "<p style='color:orange;'>Ya estás en esta clase 😅</p>";
-        }
-    } else {
-        echo "<p style='color:red;'>Código incorrecto ❌</p>";
-    }
+} else {
+    echo "No s'ha trobat cap classe amb aquest codi.";
 }
+
+$conn->close();
 ?>

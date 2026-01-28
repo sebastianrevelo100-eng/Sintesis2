@@ -1,31 +1,35 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 include 'conexion.php';
 
-// Verificar sesión
+// si no eres profesor no puedes crear clase
 if(!isset($_SESSION['id']) || $_SESSION['rol'] != 'profesor'){
-    die("No tienes permiso para crear clases.");
+    die("no tienes permiso para crear clases");
 }
 
-// Verificar que los datos llegaron
+// si llegaron los datos del formulario
 if(isset($_POST['nombre'])){
-    $nombre = $conn->real_escape_string($_POST['nombre']);
-    $descripcion = $conn->real_escape_string($_POST['descripcion']);
+    $nombre = $_POST['nombre']; // nombre de la clase
+    $descripcion = $_POST['descripcion']; // descripcion
     $profesor_id = $_SESSION['id'];
 
+    // codigo random de 6 letras y numeros
     $codigo = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 0, 6);
-    $sql = "INSERT INTO clases (nombre, descripcion, profesor_id, codigo) VALUES ('$nombre', '$descripcion', '$profesor_id', '$codigo')";
 
+    // guardar en la base de datos
+    $sql = "INSERT INTO clases (nombre, descripcion, profesor_id, codigo)
+            VALUES ('$nombre','$descripcion','$profesor_id','$codigo')";
 
     if($conn->query($sql) === TRUE){
-        echo "Clase creada correctamente. <a href='../mainPage.php'>Volver al menú</a>";
+        // mostrar mensaje y link a la clase
+        echo "clase creada! codigo: $codigo <br>";
+        echo "<a href='../clases.php?id=".$conn->insert_id."'>ir a la pagina de la clase</a><br>";
+        echo "<a href='../mainPage.php'>volver al menu</a>";
     } else {
-        echo "Error al crear clase: " . $conn->error;
+        echo "error al crear clase";
     }
 
 } else {
-    echo "Por favor completa el formulario.";
+    echo "por favor completa el formulario";
 }
 ?>

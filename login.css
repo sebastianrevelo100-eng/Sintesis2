@@ -11,91 +11,49 @@ cambiado el titulo de la pagina
 
 
 /* Fondo y tipografía general */
-body {
-    background-color: rgb(118, 118, 255);
-    font-family: Arial, Helvetica, sans-serif;
+body{
+background-color: rgb(118, 118, 255);
+font-family: Arial;
 }
 
-/* Caja central del login */
-.container {
-    width: 400px;
-    margin: 80px auto;
-    padding: 30px;
-    background-color: rgb(48, 48, 48);
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 20px 20px 18px rgba(0, 0, 0, 0.5);
+.container{
+width: 400px;
+margin: 120px auto;
+background: #333;
+padding: 50px;
+text-align: center;
 }
 
-/* Título */
 .textoLogin{
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #ffffff;
+font-size: 25px;
+color:white;
+margin-bottom: 10px;
 }
 
-.textoLogin:hover{
-    transition: 0.3s;
-    transform: scale(1.2);
-}
-
-/* Inputs */
 .inputCorreo{
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    border: 2px solid rgb(48, 48, 48);
-    border-radius: 10px;
-}
-
-.inputCorreo:hover{
-    transition: 0.2s;
-    border-color: rgb(118, 118, 255);
+width: 100%;
+padding: 8px;
+border:1px solid black;
+margin-bottom: 10px;
 }
 
 .inputContraseña{
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    border: 2px solid rgb(48, 48, 48);
-    border-radius: 10px;
+width: 100%;
+padding: 8px;
+border:1px solid black;
+margin-bottom: 10px;
 }
 
-.inputContraseña:hover{
-    transition: 0.2s;
-    border-color: rgb(118, 118, 255);
-}
-
-/* Botón de login */
 .botonSubmit{
-    width: 95%;
-    padding: 10px;
-    font-size: x-large;
-    border-radius: 10px;
-    border: 2px solid rgb(118, 118, 255);
-    background-color: rgb(118, 118, 255);
-    cursor: pointer;
-    color: #000;
+padding: 10px;
+background: blue;
+color: black;
+border: none;
+width: 100%;
 }
 
-.botonSubmit:hover{
-    color: #ffffff;
-    background-color: rgb(48, 48, 48);
-    transition: 0.3s;
-}
-
-/* Enlace para crear cuenta */
-.createAccButton {
-    display: block;
-    margin-top: 15px;
-    font-size: 14px;
-    text-decoration: none;
-    color: #ffffff;
-}
-
-.createAccButton:hover {
-    color: rgb(118, 118, 255);
-    transition: 0.3s;
+.createAccButton{
+color:white;
+font-size: 12px;
+text-decoration:none;
 }
