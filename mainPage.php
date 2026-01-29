@@ -18,7 +18,7 @@ $rol = $_SESSION['rol'];
 
 <!DOCTYPE html>
     <html>
-        
+
     <head>
         <meta charset="UTF-8">
         <title>EduMain - Página principal</title>
@@ -28,9 +28,9 @@ $rol = $_SESSION['rol'];
 
         <!-- cabezera -->
         <div class="menu">
-        <h2>Benvingut, <?php echo $nombre; ?> (<?php echo $rol; ?>)</h2>
+            <h2>Benvingut, <?php echo $nombre; ?> (<?php echo $rol; ?>)</h2>
 
-        <ul>
+            <ul>
         <li><a href="php/misclases.php">Mis clases</a></li>
         <?php if($rol == "profesor"): ?>
         <li><a href="clase/crearclase.html">Crear clase</a></li>

@@ -25,8 +25,8 @@ if(isset($_POST['nombre'])){
     $codigo = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 0, 6);
 
     // guardar en la base de datos
-    $sql = "INSERT INTO clases (nombre, descripcion, profesor_id, codigo)
-            VALUES ('$nombre','$descripcion','$profesor_id','$codigo')";
+    $sql = "INSERT INTO clases (nombre, descripcion, profesor_id)
+            VALUES ('$nombre','$descripcion','$profesor_id')";
 
     if($conn->query($sql) === TRUE){
         // mostrar mensaje y link a la clase
@@ -34,7 +34,7 @@ if(isset($_POST['nombre'])){
         echo "<a href='../clases.php?id=".$conn->insert_id."'>ir a la pagina de la clase</a><br>";
         echo "<a href='../mainPage.php'>volver al menu</a>";
     } else {
-        echo "error al crear clase";
+        echo "error al crear clase <br>" . $conn->error;
     }
 
 } else {
