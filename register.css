@@ -1,111 +1,55 @@
-/* register.css */
-/* CAMBIOS */
-/*
-14 12 2025
-he puesto una classe para cada uno de los inputs y el select y cambiado la decoracion de estos (nombre, correo, contraseña, rol)
-cambiado el fondo ambos de la pagina y de la parte principal
-cambiado el titulo de la pagina
-
-15 12 2025
-
-*/
-
-/* Fondo y tipografía general */
-body {
-    background-color: rgb(118, 118, 255);
-    font-family: Arial, Helvetica, sans-serif;
+body{
+background-color: rgb(118, 118, 255);
+font-family: Arial;
 }
 
-/* Caja central del registro */
 .container{
-    width: 400px;
-    margin: 80px auto;
-    padding: 30px;
-    background-color: rgb(48, 48, 48); 
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 20px 20px 18px rgba(0, 0, 0, 0.5);
-
+width: 400px;
+margin: 120px auto;
+background: #333;
+padding: 50px;
+text-align: center;
 }
 
-/* Título */
 .textoRegistro{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 28px;
-    color: #ffffff; 
+font-size: 25px;
+color:white;
+margin-bottom: 10px;
 }
 
 .inputNombre{
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    border: 2px solid rgb(48, 48, 48); 
-    border-radius: 10px;
-}
-
-.inputNombre:hover{
-    transition: 0.2s;
-    border-color: rgb(118, 118, 255);
+width: 100%;
+padding: 8px;
+border:1px solid black;
+margin-bottom: 10px;
 }
 
 .inputCorreo{
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    border: 2px solid rgb(48, 48, 48); 
-    border-radius: 10px;
-}
-
-.inputCorreo:hover{
-    transition: 0.2s;
-    border-color: rgb(118, 118, 255);
+width: 100%;
+padding: 8px;
+border:1px solid black;
+margin-bottom: 10px;
 }
 
 .inputContraseña{
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    border: 2px solid rgb(48, 48, 48); 
-    border-radius: 10px;
-}
-
-.inputContraseña:hover{
-    transition: 0.2s;
-    border-color: rgb(118, 118, 255);
+width: 100%;
+padding: 8px;
+border:1px solid black;
+margin-bottom: 10px;
 }
 
 .seleccionRol{
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    border: 2px solid rgb(48, 48, 48); 
-    border-radius: 10px;
+width: 100%;
+padding: 8px;
+border:1px solid black;
+margin-bottom: 10px;
 }
 
-.seleccionRol:hover{
-    transition: 0.2s;
-    border-color: rgb(118, 118, 255);
-}
-
-/* Botón de registro */
 .botonSubmit{
-    width: 95%;
-    padding: 10px;
-    font-size: x-large;
-    border-radius: 10px;
-    border: 2px solid rgb(118, 118, 255); 
-    background-color: rgb(118, 118, 255); 
-    cursor: pointer;
-    color: #000;
-}
-
-.botonSubmit:hover{
-    color: #ffffff;
-    background-color: rgb(48, 48, 48);
-    transition: 0.3s;
+padding: 10px;
+background: blue;
+color: black;
+border: none;
+width: 100%;
 }
 

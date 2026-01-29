@@ -1,87 +1,48 @@
+/* index.css versión principiante estilo login */
+
 /* Fondo y tipografía general */
-body {
-    background-color: rgb(118, 118, 255);
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #fff;
+body{
+background-color: rgb(118,118,255);
+font-family: Arial;
+margin:0;
+padding:0;
+color:white;
 }
 
-/* Contenedor principal */
-.container {
-    width: 90%;
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 30px;
-    background-color: rgb(48, 48, 48);
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 20px 20px 18px rgba(0, 0, 0, 0.5);
+
+.container{
+width: 400px;
+margin: 50px auto;
+background: #333;
+padding: 50px;
+text-align: center;
 }
 
-/* Header */
-header h1.eduMain {
-    font-size: 36px;
-    margin-bottom: 10px;
-    color: #ffffff;
+.eduMain{
+font-size: 25px;
+color:white;
+margin-bottom: 10px;
 }
 
-header p.tagline {
-    font-size: 18px;
-    color: #ccc;
-    margin-bottom: 30px;
+/* Botones */
+.button{
+display:inline-block;
+width: 100%;
+padding: 10px;
+margin: 5px 0;
+background: blue;
+color: black;
+border: none;
+border-radius: 5px;
+text-decoration:none;
+cursor:pointer;
+font-weight:bold;
 }
 
-/* Botones de navegación */
-.button-container {
-    margin-bottom: 40px;
-}
-
-.button {
-    display: inline-block;
-    width: 150px;
-    padding: 12px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 2px solid rgb(118, 118, 255);
-    background-color: rgb(118, 118, 255);
-    color: #000;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.button:hover {
-    background-color: rgb(48, 48, 48);
-    color: #fff;
-}
-
-/* Sección características */
-.Caracteristicas {
-    background-color: rgb(70, 70, 70);
-    padding: 25px;
-    border-radius: 10px;
-    text-align: left;
-    margin-bottom: 30px;
-}
-
-.Caracteristicas h2 {
-    margin-bottom: 15px;
-}
-
-.Caracteristicas ul {
-    list-style: none;
-    padding-left: 20px;
-}
-
-.Caracteristicas ul li {
-    margin-bottom: 10px;
-}
-
-/* Footer */
-footer {
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: #ccc;
+.Caracteristicas{
+background-color: rgb(70,70,70);
+padding: 20px;
+border-radius:5px;
+margin-top: 20px;
+text-align:left;
 }
