@@ -38,6 +38,6 @@ if(isset($_POST['correo']) && isset($_POST['contraseña'])) {
 } else {
     echo "Por favor completa todos los campos del formulario.";
 }
-
+}
 $conn->close();
 ?>
