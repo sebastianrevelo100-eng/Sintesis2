@@ -25,8 +25,8 @@ if(isset($_POST['nombre'])){
     $codigo = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 0, 6);
 
     // guardar en la base de datos
-    $sql = "INSERT INTO clases (nombre, descripcion, profesor_id)
-            VALUES ('$nombre','$descripcion','$profesor_id')";
+    $sql = "INSERT INTO clases (nombre, descripcion, profesor_id, codigo)
+            VALUES ('$nombre','$descripcion','$profesor_id', '$codigo)";
 
     if($conn->query($sql) === TRUE){
         // mostrar mensaje y link a la clase

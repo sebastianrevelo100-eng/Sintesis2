@@ -29,10 +29,10 @@ if(isset($_POST['correo']) && isset($_POST['contraseña'])) {
             header("Location: ../mainPage.php");
             exit();
         } else {
-            echo "Contraseña incorrecta.";
+            echo "Contraseña incorrecta." . $conn->error;
         }
     } else {
-        echo "Usuario no encontrado.";
+        echo "Usuario no encontrado." . $conn->error;
     }
 
 } else {
