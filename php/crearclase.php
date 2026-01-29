@@ -2,20 +2,20 @@
 session_start();
 include 'conexion.php';
 
-<<<<<<< HEAD
 
-=======
+
+
 // si no eres profesor no puedes crear clase
->>>>>>> 6cca4e37ad2e6071aee32fddf9408dab6b7470c2
+
 if(!isset($_SESSION['id']) || $_SESSION['rol'] != 'profesor'){
     die("no tienes permiso para crear clases");
 }
 
-<<<<<<< HEAD
 
-=======
+
+
 // si llegaron los datos del formulario
->>>>>>> 6cca4e37ad2e6071aee32fddf9408dab6b7470c2
+
 if(isset($_POST['nombre'])){
     $nombre = $_POST['nombre']; // nombre de la clase
     $descripcion = $_POST['descripcion']; // descripcion

@@ -17,7 +17,7 @@ if(isset($_POST['correo']) && isset($_POST['contraseña'])) {
 
         if(password_verify($contraseña, $row['contraseña'])) {
            
-=======
+
         if(($contraseña == $row['contraseña'])) {
             // Guardar datos del usuario en la sesión
 
