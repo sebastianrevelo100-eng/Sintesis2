@@ -11,10 +11,13 @@ $nombre = $_SESSION['nombre'];
 $rol = $_SESSION['rol'];
 ?>
 
+<<<<<<< HEAD
 <!-- uri revisa la mainpage -->
 <!-- karma restaurant -->
 
 
+=======
+>>>>>>> a792c069fd5c9ae889041a90d33714c4e7078c1f
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,10 +36,21 @@ $rol = $_SESSION['rol'];
             <?php endif; ?>
             <li><a href="php/logout.php">Cerrar sesión</a></li>
         </ul>
+<?php if($rol == 'alumno'): ?>
+<form action="php/unirse.php" method="POST">
+    <input type="text" name="codigo" placeholder="Código de clase" required>
+    <input type="submit" value="Unirse a la clase">
+</form>
+<?php endif; ?>
+
     </div>
+    </div>
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> a792c069fd5c9ae889041a90d33714c4e7078c1f
     
 </body>
 </html>
