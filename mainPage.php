@@ -10,86 +10,79 @@ $nombre = $_SESSION['nombre'];
 $rol = $_SESSION['rol'];
 ?>
 
-<<<<<<< HEAD
+
 <!-- uri revisa la mainpage -->
 <!-- karma restaurant -->
 
 
-=======
->>>>>>> a792c069fd5c9ae889041a90d33714c4e7078c1f
+
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>EduMain - Página principal</title>
-<link rel="stylesheet" href="mainPage.css">
-</head>
-<body>
+    <html>
+        
+    <head>
+        <meta charset="UTF-8">
+        <title>EduMain - Página principal</title>
+        <link rel="stylesheet" href="mainPage.css">
+    </head>
+        <body>
 
-<!-- cabezera -->
-<div class="menu">
-<h2>Benvingut, <?php echo $nombre; ?> (<?php echo $rol; ?>)</h2>
+        <!-- cabezera -->
+        <div class="menu">
+        <h2>Benvingut, <?php echo $nombre; ?> (<?php echo $rol; ?>)</h2>
 
-<ul>
-<li><a href="php/misclases.php">Mis clases</a></li>
-<?php if($rol == "profesor"): ?>
-<li><a href="clase/crearclase.html">Crear clase</a></li>
-<?php endif; ?>
-<li><a href="php/logout.php">Tancar sessió</a></li>
-</ul>
+        <ul>
+        <li><a href="php/misclases.php">Mis clases</a></li>
+        <?php if($rol == "profesor"): ?>
+        <li><a href="clase/crearclase.html">Crear clase</a></li>
+        <?php endif; ?>
+        <li><a href="php/logout.php">Tancar sessió</a></li>
+        </ul>
 
-<?php if($rol == "alumno"): ?>
-<form action="php/unirse.php" method="POST">
-<input type="text" name="codigo" placeholder="Códi de la classe" required>
-<input type="submit" value="Unir-se a la classe">
-</form>
-<?php endif; ?>
-</div> <!-- fin cabezera -->
+        <?php if($rol == "alumno"): ?>
 
-<!-- bloque de clases separado abajo -->
-<div class="clases">
-<h3>Les meves classes</h3>
+        <form action="php/unirse.php" method="POST">
+            <input type="text" name="codigo" placeholder="Códi de la classe" required>
+            <input type="submit" value="Unir-se a la classe">
+        </form>
 
-<?php
-include 'php/conexion.php';
+        <?php endif; ?>
+        </div> <!-- fin cabezera -->
 
-// mostrar las clases del usuario
-if($rol == 'alumno'){
-    $alumno_id = $_SESSION['id'];
-    $sql = "SELECT c.* FROM clases c
-            INNER JOIN alumnos_clases ac ON c.id = ac.clase_id
-            WHERE ac.alumno_id='$alumno_id'";
-    $res = $conn->query($sql);
-    while($clase = $res->fetch_assoc()){
-        echo "<p><a href='clases.php?id=".$clase['id']."'>".$clase['nombre']."</a></p>";
-    }
-}
+        <!-- bloque de clases separado abajo -->
+        <div class="clases">
+        <h3>Les meves classes</h3>
 
-if($rol == 'profesor'){
-    $profesor_id = $_SESSION['id'];
-    $sql = "SELECT * FROM clases WHERE profesor_id='$profesor_id'";
-    $res = $conn->query($sql);
-    while($clase = $res->fetch_assoc()){
-        echo "<p><a href='clases.php?id=".$clase['id']."'>".$clase['nombre']."</a></p>";
-    }
-}
+        <?php
+        include 'php/conexion.php';
 
-$conn->close();
-?>
+        // mostrar las clases del usuario
+        if($rol == 'alumno'){
+            $alumno_id = $_SESSION['id'];
+            $sql = "SELECT c.* FROM clases c
+                    INNER JOIN alumnos_clases ac ON c.id = ac.clase_id
+                    WHERE ac.alumno_id='$alumno_id'";
+            $res = $conn->query($sql);
+            while($clase = $res->fetch_assoc()){
+                echo "<p><a href='clases.php?id=".$clase['id']."'>".$clase['nombre']."</a></p>";
+            }
+        }
 
-</div> 
+        if($rol == 'profesor'){
+            $profesor_id = $_SESSION['id'];
+            $sql = "SELECT * FROM clases WHERE profesor_id='$profesor_id'";
+            $res = $conn->query($sql);
+            while($clase = $res->fetch_assoc()){
+                echo "<p><a href='clases.php?id=".$clase['id']."'>".$clase['nombre']."</a></p>";
+            }
+        }
 
-<<<<<<< HEAD
-    </div>
-    </div>
-<<<<<<< HEAD
+        $conn->close();
+        ?>
 
 
 
-=======
->>>>>>> a792c069fd5c9ae889041a90d33714c4e7078c1f
-    
-=======
->>>>>>> 6cca4e37ad2e6071aee32fddf9408dab6b7470c2
-</body>
-</html>
+
+
+
+        </body>
+    </html>
