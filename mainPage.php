@@ -37,7 +37,8 @@ $rol = $_SESSION['rol'];
 <input type="submit" value="Unir-se a la classe">
 </form>
 <?php endif; ?>
-</div> <!-- fin cabezera -->
+</div> 
+<!-- fin cabezera -->
 
 <!-- bloque de clases separado abajo -->
 <div class="clases">
