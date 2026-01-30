@@ -1,11 +1,13 @@
 <?php
-session_start();
+session_start(); 
 
+// verificamos si el usuario no ha iniciado sesion, si no lo envia al login.html
 if(!isset($_SESSION['id'])){
     header("Location: login.html");
     exit();
 }
 
+// Guardamos el nombre y rol del usuario para mostrar en la página
 $nombre = $_SESSION['nombre'];
 $rol = $_SESSION['rol'];
 ?>
@@ -13,41 +15,38 @@ $rol = $_SESSION['rol'];
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>EduMain - Página principal</title>
-<link rel="stylesheet" href="mainPage.css">
+    <meta charset="UTF-8">
+    <title>EduMain - Página principal</title>
+    <link rel="stylesheet" href="mainPage.css">
 </head>
 <body>
 
-<!-- cabezera -->
+<!-- meuno de arriba (benvingut alum, mis clases etc.) -->
 <div class="menu">
-<h2>Benvingut, <?php echo $nombre; ?> (<?php echo $rol; ?>)</h2>
+    <h2>Benvingut, <?php echo $nombre; ?> (<?php echo $rol; ?>)</h2>
+    <ul>
+        <li><a href="php/misclases.php">Mis clases</a></li>
+        <?php if($rol == "profesor"): ?>
+        <li><a href="clase/crearclase.html">Crear clase</a></li>
+        <?php endif; ?>
+        <li><a href="php/logout.php">Tancar sessió</a></li>
+    </ul>
 
-<ul>
-<li><a href="php/misclases.php">Mis clases</a></li>
-<?php if($rol == "profesor"): ?>
-<li><a href="clase/crearclase.html">Crear clase</a></li>
-<?php endif; ?>
-<li><a href="php/logout.php">Tancar sessió</a></li>
-</ul>
+    <!-- formulario para que el alumno se una a una clase con el codigo-->
+    <?php if($rol == "alumno"): ?>
+    <form action="php/unirse.php" method="POST">
+        <input type="text" name="codigo" placeholder="Códi de la classe" required>
+        <input type="submit" value="Unir-se a la classe">
+    </form>
+    <?php endif; ?>
+</div>
 
-<?php if($rol == "alumno"): ?>
-<form action="php/unirse.php" method="POST">
-<input type="text" name="codigo" placeholder="Códi de la classe" required>
-<input type="submit" value="Unir-se a la classe">
-</form>
-<?php endif; ?>
-</div> 
-<!-- fin cabezera -->
-
-<!-- bloque de clases separado abajo -->
-<div class="clases">
 <h3>Les meves classes</h3>
 
 <?php
-include 'php/conexion.php';
+include 'php/conexion.php'; // nos conectamos a la base de datos
 
-// mostrar las clases del usuario
+// Mostrar clases segun si es profe o alumno
 if($rol == 'alumno'){
     $alumno_id = $_SESSION['id'];
     $sql = "SELECT c.* FROM clases c
@@ -70,8 +69,6 @@ if($rol == 'profesor'){
 
 $conn->close();
 ?>
-
-</div> 
 
 </body>
 </html>

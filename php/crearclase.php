@@ -2,7 +2,7 @@
 session_start();
 include 'conexion.php';
 
-// si no eres profesor no puedes crear clase
+// si no eres profes no puedes crear una clase
 if(!isset($_SESSION['id']) || $_SESSION['rol'] != 'profesor'){
     die("no tienes permiso para crear clases");
 }
@@ -13,7 +13,7 @@ if(isset($_POST['nombre'])){
     $descripcion = $_POST['descripcion']; // descripcion
     $profesor_id = $_SESSION['id'];
 
-    // codigo random de 6 letras y numeros
+    // codigo de 6 letras y numeros
     $codigo = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 0, 6);
 
     // guardar en la base de datos

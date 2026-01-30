@@ -8,32 +8,24 @@
 </head>
 <body>
 
-<div class="container">
-<h1 class="textoRegistro">Registre d'suario</h1>
+    <div class="container">
+        <h1 class="textoRegistro">Registro de usuario</h1>
+        <form action="php/register.php" method="POST">
 
-<form action="php/register.php" method="POST">
+            <input class="inputNombre" name="nombre" type="text" placeholder="Nombre" required><br><br>
+            <input class="inputCorreo" name="correo" type="email" placeholder="Correo" required><br><br>
+            <input class="inputContraseña" name="contraseña" type="password" placeholder="Contraseña" required><br><br>
+            <select class="seleccionRol" name="rol">
 
-<input class="inputNombre" type="text" name="nombre" placeholder="Nombre" required>
-<br><br>
+                <option value="">Selecciona un rol</option>
 
-<input class="inputCorreo" type="email" name="correo" placeholder="Correo" required>
-<br><br>
-
-<input class="inputContraseña" type="password" name="contraseña" placeholder="Contraseña" required>
-<br><br>
-
-<select class="seleccionRol" name="rol" required>
-<option value="">Selecciona un rol</option>
-<option value="alumno">Alumno</option>
-<option value="profesor">Profesor</option>
-</select>
-<br><br>
-
-<input class="botonSubmit" type="submit" value="Registrarse">
-
-</form>
-
-</div>
+                <option value="alumno">Alumno</option>
+                <option value="profesor">Profesor</option>
+            </select><br><br>
+            <input class="botonSubmit" type="submit" value="Registrarse">
+        </form>
+    </div>
+    
 
 </body>
 </html>
