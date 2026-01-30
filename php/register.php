@@ -27,7 +27,7 @@ if (isset($_POST['nombre']) && isset($_POST['correo']) && isset($_POST['contrase
         $_SESSION['rol'] = $rol;
 
         // Redirigir
-        header("Location: ../mainpage.php");
+        header("Location: ../mainPage.php");
         exit();
     } else {
         echo "Error: " . $conn->error;
