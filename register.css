@@ -1,5 +1,5 @@
 body{
-background-color: rgb(118, 118, 255);
+background-color: #7676ff;
 font-family: Arial;
 }
 
@@ -9,12 +9,16 @@ margin: 120px auto;
 background: #333;
 padding: 50px;
 text-align: center;
+box-shadow: 20px 20px 20px black;
+border-radius: 15px;
+align-content: center;
 }
 
 .textoRegistro{
 font-size: 25px;
 color:white;
 margin-bottom: 10px;
+position: relative; top: -20px;
 }
 
 .inputNombre{
@@ -22,6 +26,13 @@ width: 100%;
 padding: 8px;
 border:1px solid black;
 margin-bottom: 10px;
+border-radius: 5px;
+}
+.inputNombre:hover{
+    border-color: #7676ff;
+    transition: 0.3s;
+    border-width: 1px;
+    background-color: #ffffffd1;
 }
 
 .inputCorreo{
@@ -29,6 +40,13 @@ width: 100%;
 padding: 8px;
 border:1px solid black;
 margin-bottom: 10px;
+border-radius: 5px;
+}
+.inputCorreo:hover{
+    border-color: #7676ff;
+    transition: 0.3s;
+    border-width: 1px;
+    background-color: #ffffffd1;
 }
 
 .inputContraseña{
@@ -36,6 +54,14 @@ width: 100%;
 padding: 8px;
 border:1px solid black;
 margin-bottom: 10px;
+border-radius: 5px;
+justify-content: center;
+}
+.inputContraseña:hover{
+    border-color: #7676ff;
+    transition: 0.3s;
+    border-width: 1px;
+    background-color: #ffffffd1;
 }
 
 .seleccionRol{
@@ -43,13 +69,30 @@ width: 100%;
 padding: 8px;
 border:1px solid black;
 margin-bottom: 10px;
+border-radius: 5px;
+justify-content: center;
+}
+.seleccionRol:hover{
+    border-color: #7676ff;
+    transition: 0.3s;
+    background-color: #ffffffd1;
 }
 
 .botonSubmit{
 padding: 10px;
-background: blue;
+background: #3636ff;
+position: relative; bottom: -20px;
 color: black;
 border: none;
 width: 100%;
+border-color: #3636ff;
+border-style: solid;
+border-radius: 5px;
 }
-
+.botonSubmit:hover{
+    background-color: #333;
+    transition: 0.3s;
+    color: white;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
