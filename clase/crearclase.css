@@ -1,14 +1,12 @@
-/* crearClase.css */
 
-/* Fondo y tipografía general */
 body {
-    background-color: rgb(118, 118, 255); /* fondo violeta */
+    background-color: rgb(118, 118, 255); /* fondo morado flojo */
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* Caja central */
+/* caja central */
 .container {
     width: 400px;
     margin: 80px auto;
@@ -19,14 +17,13 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Título */
+/* titulo */
 .container h1 {
     font-size: 28px;
     margin-bottom: 20px;
     color: #000;
 }
 
-/* Inputs y textarea */
 .container input[type="text"],
 .container textarea {
     width: 90%;
@@ -37,7 +34,7 @@ body {
     border-radius: 10px;
 }
 
-/* Botón de enviar */
+/* boton de enviar */
 .container input[type="submit"] {
     width: 95%;
     padding: 10px;

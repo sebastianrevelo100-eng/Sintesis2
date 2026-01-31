@@ -1,88 +1,74 @@
 <?php
-session_start();
+session_start(); 
 
+// verificamos si el usuario no ha iniciado sesion, si no lo envia al login.html
 if(!isset($_SESSION['id'])){
     header("Location: login.html");
     exit();
 }
 
+// Guardamos el nombre y rol del usuario para mostrar en la página
 $nombre = $_SESSION['nombre'];
 $rol = $_SESSION['rol'];
 ?>
 
-
-<!-- uri revisa la mainpage -->
-<!-- karma restaurant -->
-
-
-
 <!DOCTYPE html>
-    <html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>EduMain - Página principal</title>
+    <link rel="stylesheet" href="mainPage.css">
+</head>
+<body>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>EduMain - Página principal</title>
-        <link rel="stylesheet" href="mainPage.css">
-    </head>
-        <body>
-
-        <!-- cabezera -->
-        <div class="menu">
-            <h2>Benvingut, <?php echo $nombre; ?> (<?php echo $rol; ?>)</h2>
-
-            <ul>
+<!-- meuno de arriba (benvingut alum, mis clases etc.) -->
+<div class="menu">
+    <h2>Benvingut, <?php echo $nombre; ?> (<?php echo $rol; ?>)</h2>
+    <ul>
         <li><a href="php/misclases.php">Mis clases</a></li>
         <?php if($rol == "profesor"): ?>
         <li><a href="clase/crearclase.html">Crear clase</a></li>
         <?php endif; ?>
         <li><a href="php/logout.php">Tancar sessió</a></li>
-        </ul>
+    </ul>
 
-        <?php if($rol == "alumno"): ?>
+    <!-- formulario para que el alumno se una a una clase con el codigo-->
+    <?php if($rol == "alumno"): ?>
+    <form action="php/unirse.php" method="POST">
+        <input type="text" name="codigo" placeholder="Códi de la classe" required>
+        <input type="submit" value="Unir-se a la classe">
+    </form>
+    <?php endif; ?>
+</div>
 
-        <form action="php/unirse.php" method="POST">
-            <input type="text" name="codigo" placeholder="Códi de la classe" required>
-            <input type="submit" value="Unir-se a la classe">
-        </form>
+<h3>Les meves classes</h3>
 
-        <?php endif; ?>
-        </div> <!-- fin cabezera -->
+<?php
+include 'php/conexion.php'; // nos conectamos a la base de datos
 
-        <!-- bloque de clases separado abajo -->
-        <div class="clases">
-        <h3>Les meves classes</h3>
+// Mostrar clases segun si es profe o alumno
+if($rol == 'alumno'){
+    $alumno_id = $_SESSION['id'];
+    $sql = "SELECT c.* FROM clases c
+            INNER JOIN alumnos_clases ac ON c.id = ac.clase_id
+            WHERE ac.alumno_id='$alumno_id'";
+    $res = $conn->query($sql);
+    while($clase = $res->fetch_assoc()){
+        echo "<p><a href='clases.php?id=".$clase['id']."'>".$clase['nombre']."</a></p>";
+    }
+}
 
-        <?php
-        include 'php/conexion.php';
+if($rol == 'profesor'){
+    $profesor_id = $_SESSION['id'];
+    $sql = "SELECT * FROM clases WHERE profesor_id='$profesor_id'";
+    $res = $conn->query($sql);
+    while($clase = $res->fetch_assoc()){
+        echo "<p><a href='clases.php?id=".$clase['id']."'>".$clase['nombre']."</a></p>";
+    }
+}
 
-        // mostrar las clases del usuario
-        if($rol == 'alumno'){
-            $alumno_id = $_SESSION['id'];
-            $sql = "SELECT c.* FROM clases c
-                    INNER JOIN alumnos_clases ac ON c.id = ac.clase_id
-                    WHERE ac.alumno_id='$alumno_id'";
-            $res = $conn->query($sql);
-            while($clase = $res->fetch_assoc()){
-                echo "<p><a href='clases.php?id=".$clase['id']."'>".$clase['nombre']."</a></p>";
-            }
-        }
+$conn->close();
+?>
 
-        if($rol == 'profesor'){
-            $profesor_id = $_SESSION['id'];
-            $sql = "SELECT * FROM clases WHERE profesor_id='$profesor_id'";
-            $res = $conn->query($sql);
-            while($clase = $res->fetch_assoc()){
-                echo "<p><a href='clases.php?id=".$clase['id']."'>".$clase['nombre']."</a></p>";
-            }
-        }
-
-        $conn->close();
-        ?>
-
-
-
-
-
-
-        </body>
-    </html>
+</body>
+</html>

@@ -1,43 +1,49 @@
 <?php
-session_start(); // <-- importante
-
+session_start();
 include 'conexion.php';
 
-if(isset($_POST['correo']) && isset($_POST['contraseña'])) {
+// Comprobar que llegan los datos
+if (!empty($_POST['correo']) && !empty($_POST['contraseña'])) {
 
     $correo = $_POST['correo'];
     $contraseña = $_POST['contraseña'];
 
-    $sql = "SELECT * FROM usuarios WHERE correo='$correo'";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM usuarios WHERE correo = '$correo'";
+    $resultado = $conn->query($sql);
 
-    if($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    if ($resultado->num_rows > 0) {
 
+        $usuario = $resultado->fetch_assoc();
 
-        if(password_verify($contraseña, $row['contraseña'])) {
-           
+        // Comparación directa (modo principiante)
+        if ($contraseña == $usuario['contraseña']) {
 
-        if(($contraseña == $row['contraseña'])) {
-            // Guardar datos del usuario en la sesión
+            $_SESSION['id'] = $usuario['id'];
+            $_SESSION['nombre'] = $usuario['nombre'];
+            $_SESSION['rol'] = $usuario['rol'];
 
-            $_SESSION['id'] = $row['id'];
-            $_SESSION['nombre'] = $row['nombre'];
-            $_SESSION['rol'] = $row['rol'];
-
-            
             header("Location: ../mainPage.php");
             exit();
+
         } else {
+<<<<<<< HEAD
             echo "Contraseña incorrecta." . $conn->error;
+=======
+            echo "Contraseña incorrecta";
+>>>>>>> e2395eda95f53a683bc86cc18cd89a4856af9ef8
         }
+
     } else {
+<<<<<<< HEAD
         echo "Usuario no encontrado." . $conn->error;
+=======
+        echo "Usuario no encontrado";
+>>>>>>> e2395eda95f53a683bc86cc18cd89a4856af9ef8
     }
 
 } else {
-    echo "Por favor completa todos los campos del formulario.";
+    echo "Rellena los campos";
 }
-}
+
 $conn->close();
 ?>
