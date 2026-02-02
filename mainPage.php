@@ -46,25 +46,33 @@ $rol = $_SESSION['rol'];
 <?php
 include 'php/conexion.php'; // nos conectamos a la base de datos
 
-// Mostrar clases segun si es profe o alumno
+// Muestra las clases depende si eres profe o alumno
 if($rol == 'alumno'){
     $alumno_id = $_SESSION['id'];
     $sql = "SELECT c.* FROM clases c
             INNER JOIN alumnos_clases ac ON c.id = ac.clase_id
             WHERE ac.alumno_id='$alumno_id'";
     $res = $conn->query($sql);
+    echo "<div class='cuadrado-clases'>";
     while($clase = $res->fetch_assoc()){
-        echo "<p><a href='clases.php?id=".$clase['id']."'>".$clase['nombre']."</a></p>";
+        echo "<div class='clase'>";
+        echo "<a href='clases.php?id=".htmlspecialchars($clase['id'])."'>".htmlspecialchars($clase['nombre'])."</a>";
+        echo "</div>";
     }
-}
+    echo "</div>";
+} 
 
 if($rol == 'profesor'){
     $profesor_id = $_SESSION['id'];
     $sql = "SELECT * FROM clases WHERE profesor_id='$profesor_id'";
     $res = $conn->query($sql);
+    echo "<div class='cuadrado-clases'>";
     while($clase = $res->fetch_assoc()){
-        echo "<p><a href='clases.php?id=".$clase['id']."'>".$clase['nombre']."</a></p>";
+        echo "<div class='clase'>";
+        echo "<a href='clases.php?id=".htmlspecialchars($clase['id'])."'>".htmlspecialchars($clase['nombre'])."</a>";
+        echo "</div>";
     }
+    echo "</div>";
 }
 
 $conn->close();
