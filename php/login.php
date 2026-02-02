@@ -26,19 +26,19 @@ if (!empty($_POST['correo']) && !empty($_POST['contraseña'])) {
             exit();
 
         } else {
-<<<<<<< HEAD
+
             echo "Contraseña incorrecta." . $conn->error;
-=======
+
             echo "Contraseña incorrecta";
->>>>>>> e2395eda95f53a683bc86cc18cd89a4856af9ef8
+
         }
 
     } else {
-<<<<<<< HEAD
+
         echo "Usuario no encontrado." . $conn->error;
-=======
+
         echo "Usuario no encontrado";
->>>>>>> e2395eda95f53a683bc86cc18cd89a4856af9ef8
+
     }
 
 } else {

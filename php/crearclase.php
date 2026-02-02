@@ -18,11 +18,11 @@ if(isset($_POST['nombre'])){
 
     // guardar en la base de datos
     $sql = "INSERT INTO clases (nombre, descripcion, profesor_id, codigo)
-<<<<<<< HEAD
+
             VALUES ('$nombre','$descripcion','$profesor_id', '$codigo)";
-=======
+
             VALUES ('$nombre','$descripcion','$profesor_id','$codigo')";
->>>>>>> e2395eda95f53a683bc86cc18cd89a4856af9ef8
+
 
     if($conn->query($sql) === TRUE){
         // mostrar mensaje y link a la clase
