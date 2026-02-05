@@ -46,3 +46,29 @@ border:1px solid rgb(225,225,225);
 border-radius:5px;
 }
 
+/* texto les meves clases */
+h3{
+    text-align: center;
+}
+
+.cuadrado-clases{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 30px auto;
+    justify-content: center;
+}
+
+.clase{
+    text-align: center;
+    background-color: white;
+    width: 200px;
+    padding: 15px;
+}
+
+.clase a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
