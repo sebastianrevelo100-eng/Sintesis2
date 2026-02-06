@@ -60,6 +60,7 @@ if($rol == 'alumno'){
         echo "</div>";
     }
     echo "</div>";
+
 } 
 
 if($rol == 'profesor'){
