@@ -33,6 +33,13 @@ $rol = $_SESSION['rol'];
         <li><a href="php/logout.php">Tancar sessió</a></li>
     </ul>
 
+    <div class=archivo>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <input type="file" name="archivo" required>
+            <button type="submit" name="subir">Subir y procesar</button>
+        </form>
+    </div>
+
     <!-- formulario para que el alumno se una a una clase con el codigo-->
     <?php if($rol == "alumno"): ?>
     <form action="php/unirse.php" method="POST">
@@ -51,6 +58,37 @@ include 'php/conexion.php'; // nos conectamos a la base de datos
 // texto de prueba con print
 $output = shell_exec('"backend\script.py"');
 echo "<pre>$output</pre>";
+
+
+//subir archivos
+
+if(isset($_POST['subir'])){
+
+        $nombreArchivo = time() . "_" . basename($_FILES['archivo']['name']);
+        $rutaPython = "C:\\Users\\oriol\\AppData\\Local\\Programs\\Python\\Python314\\python.exe";
+        $rutaScript = __DIR__ . "\\backend\\upload.py";
+        $rutaArchivo = __DIR__ . "\\uploads\\test.txt";
+        $rutaDestino = __DIR__ . "/uploads/" . $nombreArchivo;
+    
+
+        $comando = "\"$rutaPython\" \"$rutaScript\" " . escapeshellarg($rutaArchivo);
+
+        $output = shell_exec($comando . " 2>&1");
+
+    echo "<pre>$output</pre>";
+
+    if(move_uploaded_file($_FILES['archivo']['tmp_name'], $rutaDestino)){
+
+        // Ejecutar Python pasándole el archivo
+        $output = shell_exec("py backend/upload.py" . escapeshellarg($rutaDestino) . " 2>&1");
+
+        echo "<pre>$output</pre>";
+
+    } else {
+        echo "Error al subir el archivo";
+    }   
+}
+
 
 
 // Muestra las clases depende si eres profe o alumno
