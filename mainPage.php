@@ -18,6 +18,7 @@ $rol = $_SESSION['rol'];
     <meta charset="UTF-8">
     <title>EduMain - Página principal</title>
     <link rel="stylesheet" href="mainPage.css">
+    <script ></script>
 </head>
 <body>
 
@@ -46,6 +47,12 @@ $rol = $_SESSION['rol'];
 <?php
 include 'php/conexion.php'; // nos conectamos a la base de datos
 
+
+// texto de prueba con print
+$output = shell_exec('"backend\script.py"');
+echo "<pre>$output</pre>";
+
+
 // Muestra las clases depende si eres profe o alumno
 if($rol == 'alumno'){
     $alumno_id = $_SESSION['id'];
@@ -60,8 +67,9 @@ if($rol == 'alumno'){
         echo "</div>";
     }
     echo "</div>";
-
 } 
+
+
 
 if($rol == 'profesor'){
     $profesor_id = $_SESSION['id'];
