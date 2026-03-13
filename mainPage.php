@@ -65,11 +65,12 @@ echo "<pre>$output</pre>";
 if(isset($_POST['subir'])){
 
         $nombreArchivo = time() . "_" . basename($_FILES['archivo']['name']);
-        $rutaPython = "C:\\Users\\oriol\\AppData\\Local\\Programs\\Python\\Python314\\python.exe";
+        $rutaPython = __DIR__ . "\\python\\python.exe";
         $rutaScript = __DIR__ . "\\backend\\upload.py";
         $rutaArchivo = __DIR__ . "\\uploads\\test.txt";
         $rutaDestino = __DIR__ . "/uploads/" . $nombreArchivo;
     
+        
 
         $comando = "\"$rutaPython\" \"$rutaScript\" " . escapeshellarg($rutaArchivo);
 

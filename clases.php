@@ -18,6 +18,11 @@ if($res && $res->num_rows > 0){
     echo "clase no encontrada";
     exit();
 }
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
