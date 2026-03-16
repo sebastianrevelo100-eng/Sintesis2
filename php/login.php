@@ -2,7 +2,7 @@
 session_start();
 include 'conexion.php';
 
-// Comprobar que llegan los datos
+// comprovar que llegan los datos
 if (!empty($_POST['correo']) && !empty($_POST['contraseña'])) {
 
     $correo = $_POST['correo'];
@@ -15,7 +15,7 @@ if (!empty($_POST['correo']) && !empty($_POST['contraseña'])) {
 
         $usuario = $resultado->fetch_assoc();
 
-        // Comparación directa (modo principiante)
+        // comparacion directa
         if ($contraseña == $usuario['contraseña']) {
 
             $_SESSION['id'] = $usuario['id'];
@@ -26,19 +26,11 @@ if (!empty($_POST['correo']) && !empty($_POST['contraseña'])) {
             exit();
 
         } else {
-
-            echo "Contraseña incorrecta." . $conn->error;
-
             echo "Contraseña incorrecta";
-
         }
 
     } else {
-
-        echo "Usuario no encontrado." . $conn->error;
-
         echo "Usuario no encontrado";
-
     }
 
 } else {
