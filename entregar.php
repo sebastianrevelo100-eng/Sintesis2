@@ -12,6 +12,8 @@ $clase_id = $_GET['clase_id']; // ← AÑADIDO
 </head>
 <body>
 
+<?php include 'desplegable.php'; ?>
+
 <h2>Subir entrega</h2>
 
 <form action="php/subir_entrega.php" method="POST" enctype="multipart/form-data">

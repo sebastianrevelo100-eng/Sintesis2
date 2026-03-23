@@ -57,9 +57,9 @@ if($rol == 'alumno'){
     $res = $conn->query($sql);
     echo "<div class='cuadrado-clases'>";
     while($clase = $res->fetch_assoc()){
-        echo "<div class='clase'>";
-        echo "<a href='clases.php?id=".htmlspecialchars($clase['id'])."'>".htmlspecialchars($clase['nombre'])."</a>";
-        echo "</div>";
+        echo "<a class='clase' href='clases.php?id=".htmlspecialchars($clase['id'])."'>"
+        .htmlspecialchars($clase['nombre']).
+        "</a>";
     }
     echo "</div>";
 } 
@@ -70,9 +70,9 @@ if($rol == 'profesor'){
     $res = $conn->query($sql);
     echo "<div class='cuadrado-clases'>";
     while($clase = $res->fetch_assoc()){
-        echo "<a class='clase'>";
-            echo "<a href='clases.php?id=".htmlspecialchars($clase['id'])."'>".htmlspecialchars($clase['nombre'])."</a>";
-        echo "</a>";
+        echo "<a class='clase' href='clases.php?id=".htmlspecialchars($clase['id'])."'>"
+        .htmlspecialchars($clase['nombre']).
+        "</a>";
     }
     echo "</div>";
 }

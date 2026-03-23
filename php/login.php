@@ -37,5 +37,8 @@ if (!empty($_POST['correo']) && !empty($_POST['contraseña'])) {
     echo "Rellena los campos";
 }
 
+$_SESSION['foto_perfil'] = $user['foto_perfil'];
+
+
 $conn->close();
 ?>

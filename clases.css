@@ -1,0 +1,163 @@
+/* Estilos para el cuerpo de la página */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #7676ff;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: white;
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Título de la clase */
+.titulo-clase {
+    text-align: center;
+    margin-top: 0;
+}
+
+/* Subtítulo */
+.subtitulo {
+    margin-top: 30px;
+}
+
+/* Formulario para deberes */
+.form-deber {
+    /* Nada especial, solo para agrupar */
+    
+}
+
+.form-deber input,
+.form-deber textarea {
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.form-deber button {
+    padding: 10px;
+    background-color: #7676ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-deber button:hover {
+    background-color: #7676ff;
+}
+
+/* Cada deber */
+.deber {
+    background-color: lightgray;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Botón para entregar */
+.boton-entregar {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #7676ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.boton-entregar:hover {
+    background-color: #7676ff;
+}
+
+/* Botón para volver */
+.volver {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.volver:hover {
+    background-color: gray;
+}
+
+/* Pestañas */
+.tabs {
+    margin-bottom: 20px;
+}
+
+.tabs a {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #7676ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.tabs a:hover {
+    background-color: #7676ff;
+}
+
+/* Segundo body para otra página */
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+/* Barra lateral */
+.desplegable {
+    width: 200px;
+    background: white;
+    border-right: 2px solid lightblue;
+    height: 100%;
+    padding: 20px;
+    float: left;
+}
+
+/* Título del desplegable */
+.desplegable-title {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Lista de clases */
+.lista-clases {
+    display: none;
+    margin-top: 10px;
+}
+
+/* Cada clase */
+.clase-item {
+    display: block;
+    padding: 8px;
+    background: lightgray;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.clase-item:hover {
+    background: gray;
+}
+
+/* Contenido principal */
+.contenido {
+    margin-left: 240px;
+    padding: 20px;
+}
