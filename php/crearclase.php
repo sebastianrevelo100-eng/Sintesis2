@@ -20,7 +20,10 @@ if(isset($_POST['nombre'])){
     $sql = "INSERT INTO clases (nombre, descripcion, profesor_id, codigo)
 
             VALUES ('$nombre','$descripcion','$profesor_id','$codigo')";    
+<<<<<<< HEAD
 
+=======
+>>>>>>> c1ba70431214d26273bc35bffa26d8c39f6d1040
 
 
     if($conn->query($sql) === TRUE){

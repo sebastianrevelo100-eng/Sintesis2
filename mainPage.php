@@ -74,6 +74,7 @@ $rol = $_SESSION['rol'];
 include 'php/conexion.php'; // nos conectamos a la base de datos
 
 
+<<<<<<< HEAD
 // texto de prueba con print
 $output = shell_exec('"backend\script.py"');
 echo "<pre>$output</pre>";
@@ -87,6 +88,8 @@ echo "<pre>$output</pre>";
 
 
 
+=======
+>>>>>>> c1ba70431214d26273bc35bffa26d8c39f6d1040
 // Muestra las clases depende si eres profe o alumno
 if($rol == 'alumno'){
     $alumno_id = $_SESSION['id'];
@@ -103,8 +106,6 @@ if($rol == 'alumno'){
     echo "</div>";
 } 
 
-
-
 if($rol == 'profesor'){
     $profesor_id = $_SESSION['id'];
     $sql = "SELECT * FROM clases WHERE profesor_id='$profesor_id'";
@@ -114,10 +115,14 @@ if($rol == 'profesor'){
         echo "<a class='clase' href='clases.php?id=".htmlspecialchars($clase['id'])."'>"
         .htmlspecialchars($clase['nombre']).
         "</a>";
+<<<<<<< HEAD
 
+=======
+>>>>>>> c1ba70431214d26273bc35bffa26d8c39f6d1040
     }
     echo "</div>";
 }
+
 
 $conn->close();
 ?>
