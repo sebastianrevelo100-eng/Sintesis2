@@ -1,5 +1,9 @@
 /* mainPage.css versión principiante */
 
+*{
+    text-decoration: none !important;
+}
+
 body{
 margin:0;
 padding:0;
@@ -57,6 +61,7 @@ h3{
     gap: 20px;
     margin: 30px auto;
     justify-content: center;
+    text-decoration: none;
 }
 
 .clase{
@@ -67,9 +72,75 @@ h3{
 }
 
 .clase a{
-    text-decoration: none;
     color: black;
     font-size: 18px;
     font-weight: bold;
 }
 
+.perfil-header {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ddd;
+}
+
+.botonPerfil{
+    border-radius: 5px;
+    border: 10px;
+    border-color: black;
+    color: red;
+}
+
+.botonPerfil:hover{
+    color: red;
+}
+.perfil-container {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.perfil-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ddd;
+}
+
+.perfil-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-top: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    padding: 10px;
+    width: 180px;
+}
+
+.perfil-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    border-radius: 6px;
+}
+
+.perfil-menu a:hover {
+    background: #f0f0f0;
+}
+
+.perfil-menu.show {
+    display: block;
+}

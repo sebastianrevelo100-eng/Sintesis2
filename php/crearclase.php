@@ -19,9 +19,8 @@ if(isset($_POST['nombre'])){
     // guardar en la base de datos
     $sql = "INSERT INTO clases (nombre, descripcion, profesor_id, codigo)
 
-            VALUES ('$nombre','$descripcion','$profesor_id', '$codigo)";
+            VALUES ('$nombre','$descripcion','$profesor_id','$codigo')";    
 
-            VALUES ('$nombre','$descripcion','$profesor_id','$codigo')";
 
 
     if($conn->query($sql) === TRUE){

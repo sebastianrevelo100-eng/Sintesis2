@@ -18,8 +18,34 @@ $rol = $_SESSION['rol'];
     <meta charset="UTF-8">
     <title>EduMain - Página principal</title>
     <link rel="stylesheet" href="mainPage.css">
-    <script ></script>
+    <script>
+
+        
+        function togglePerfilMenu() {
+            document.getElementById("perfilMenu").classList.toggle("show");
+        }
+
+
+    </script>
+
+    <div class="perfil-container">
+
+    <div id="perfilMenu" class="perfil-menu">
+        <a href="perfil.php">Ver perfil</a>
+        <a href="editarPerfil.php">Editar nombre y foto</a>
+        <a href="cambiarContrasena.php">Cambiar contraseña</a>
+        <a href="logout.php">Cerrar sesión</a>
+    </div>
+</div>
+
+
+
 </head>
+
+<div>
+    <a class="botonPerfil" href="perfil.php">perfil</a>
+</div>
+
 <body>
 
 <!-- meuno de arriba (benvingut alum, mis clases etc.) -->
@@ -32,13 +58,6 @@ $rol = $_SESSION['rol'];
         <?php endif; ?>
         <li><a href="php/logout.php">Tancar sessió</a></li>
     </ul>
-
-    <div class=archivo>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <input type="file" name="archivo" required>
-            <button type="submit" name="subir">Subir y procesar</button>
-        </form>
-    </div>
 
     <!-- formulario para que el alumno se una a una clase con el codigo-->
     <?php if($rol == "alumno"): ?>
@@ -62,33 +81,9 @@ echo "<pre>$output</pre>";
 
 //subir archivos
 
-if(isset($_POST['subir'])){
 
-        $nombreArchivo = time() . "_" . basename($_FILES['archivo']['name']);
-        $rutaPython = __DIR__ . "\\python\\python.exe";
-        $rutaScript = __DIR__ . "\\backend\\upload.py";
-        $rutaArchivo = __DIR__ . "\\uploads\\test.txt";
-        $rutaDestino = __DIR__ . "/uploads/" . $nombreArchivo;
-    
-        
 
-        $comando = "\"$rutaPython\" \"$rutaScript\" " . escapeshellarg($rutaArchivo);
 
-        $output = shell_exec($comando . " 2>&1");
-
-    echo "<pre>$output</pre>";
-
-    if(move_uploaded_file($_FILES['archivo']['tmp_name'], $rutaDestino)){
-
-        // Ejecutar Python pasándole el archivo
-        $output = shell_exec("py backend/upload.py" . escapeshellarg($rutaDestino) . " 2>&1");
-
-        echo "<pre>$output</pre>";
-
-    } else {
-        echo "Error al subir el archivo";
-    }   
-}
 
 
 
@@ -101,9 +96,9 @@ if($rol == 'alumno'){
     $res = $conn->query($sql);
     echo "<div class='cuadrado-clases'>";
     while($clase = $res->fetch_assoc()){
-        echo "<div class='clase'>";
-        echo "<a href='clases.php?id=".htmlspecialchars($clase['id'])."'>".htmlspecialchars($clase['nombre'])."</a>";
-        echo "</div>";
+        echo "<a class='clase' href='clases.php?id=".htmlspecialchars($clase['id'])."'>"
+        .htmlspecialchars($clase['nombre']).
+        "</a>";
     }
     echo "</div>";
 } 
@@ -116,9 +111,10 @@ if($rol == 'profesor'){
     $res = $conn->query($sql);
     echo "<div class='cuadrado-clases'>";
     while($clase = $res->fetch_assoc()){
-        echo "<div class='clase'>";
-        echo "<a href='clases.php?id=".htmlspecialchars($clase['id'])."'>".htmlspecialchars($clase['nombre'])."</a>";
-        echo "</div>";
+        echo "<a class='clase' href='clases.php?id=".htmlspecialchars($clase['id'])."'>"
+        .htmlspecialchars($clase['nombre']).
+        "</a>";
+
     }
     echo "</div>";
 }
