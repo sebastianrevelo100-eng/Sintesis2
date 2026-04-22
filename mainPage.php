@@ -74,24 +74,9 @@ $rol = $_SESSION['rol'];
 include 'php/conexion.php'; // nos conectamos a la base de datos
 
 
-<<<<<<< HEAD
-// texto de prueba con print
-$output = shell_exec('"backend\script.py"');
-echo "<pre>$output</pre>";
 
-
-//subir archivos
-
-
-
-
-
-
-
-=======
->>>>>>> c1ba70431214d26273bc35bffa26d8c39f6d1040
 // Muestra las clases depende si eres profe o alumno
-if($rol == 'alumno'){
+if($rol == 'alumno'){ 
     $alumno_id = $_SESSION['id'];
     $sql = "SELECT c.* FROM clases c
             INNER JOIN alumnos_clases ac ON c.id = ac.clase_id
@@ -104,7 +89,7 @@ if($rol == 'alumno'){
         "</a>";
     }
     echo "</div>";
-} 
+}
 
 if($rol == 'profesor'){
     $profesor_id = $_SESSION['id'];
@@ -115,10 +100,7 @@ if($rol == 'profesor'){
         echo "<a class='clase' href='clases.php?id=".htmlspecialchars($clase['id'])."'>"
         .htmlspecialchars($clase['nombre']).
         "</a>";
-<<<<<<< HEAD
 
-=======
->>>>>>> c1ba70431214d26273bc35bffa26d8c39f6d1040
     }
     echo "</div>";
 }
