@@ -26,6 +26,7 @@ if($res && $res->num_rows > 0){
     exit();
 }
 
+$tab = $_GET['tab'] ?? 'anuncios';
 ?>
 
 <!DOCTYPE html>
