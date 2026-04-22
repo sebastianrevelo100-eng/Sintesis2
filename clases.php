@@ -26,16 +26,6 @@ if($res && $res->num_rows > 0){
     exit();
 }
 
-<<<<<<< HEAD
-
-
-
-
-=======
-// Miramos qué pestaña quiere ver el usuario
-// Si no pone nada, mostramos "anuncios"
-$tab = $_GET['tab'] ?? 'anuncios';
->>>>>>> c1ba70431214d26273bc35bffa26d8c39f6d1040
 ?>
 
 <!DOCTYPE html>
