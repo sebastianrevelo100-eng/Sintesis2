@@ -43,7 +43,7 @@ $rol = $_SESSION['rol'];
 </head>
 
 <div>
-    <a class="botonPerfil" href="perfil.php">perfil</a>
+    <a class="botonPerfil" href="cambiarNombre.php">perfil</a>
 </div>
 
 <body>
