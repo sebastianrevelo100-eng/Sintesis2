@@ -2,50 +2,48 @@
 session_start();
 include 'conexion.php';
 
-// solo profesores
-if($_SESSION['rol'] != "profesor"){
-    echo "No puedes.";
-    exit();
-}
-
-// id de la entrega
+// pillamos el id que viene por la url
 $id_entrega = $_GET['id'];
 
-// buscar en db
-$sql = "SELECT archivo, archivo_nombre, archivo_contenido, archivo_tipo FROM entregas WHERE id=?";
-$stmt = $conn->prepare($sql);
-if(!$stmt){
-    echo "Error en prepare: " . $conn->error;
-    exit();
-}
-$stmt->bind_param("i", $id_entrega);
-if(!$stmt->execute()){
-    echo "Error en execute: " . $stmt->error;
-    exit();
-}
-$stmt->bind_result($archivo_path, $nombre, $contenido, $tipo);
-$stmt->fetch();
-$stmt->close();
+// buscamos la entrega en la bd
+$sql = "SELECT archivo_nombre, archivo_tipo, id_alumno 
+        FROM entregas 
+        WHERE id='$id_entrega'";
+$res = $conn->query($sql);
 
-if($contenido){
-    // nuevo metodo, desde db
-    header('Content-Type: ' . $tipo);
-    header('Content-Disposition: attachment; filename="' . $nombre . '"');
-    header('Content-Length: ' . strlen($contenido));
-    echo $contenido;
+// si no existe pues nada
+if(!$res || $res->num_rows == 0){
+    echo "No encontrado";
     exit();
-} elseif($archivo_path && file_exists($archivo_path)){
-    // viejo metodo, desde archivo
-    $partes = explode('_', basename($archivo_path), 2);
-    $nombre = $partes[1] ?? basename($archivo_path);
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="' . $nombre . '"');
-    header('Content-Length: ' . filesize($archivo_path));
-    readfile($archivo_path);
-    exit();
-} else {
-    echo "No encontrado. ID: $id_entrega, Path: $archivo_path";
 }
 
-$conn->close();
-?>
+$datos = $res->fetch_assoc();
+
+// nombre del archivo y tipo
+$nombre = $datos['archivo_nombre'];
+$tipo = $datos['archivo_tipo'];
+$id_alumno = $datos['id_alumno'];
+
+// comprobamos que el que descarga sea profe o el alumno dueño
+if($_SESSION['rol'] != "profesor" && $_SESSION['id'] != $id_alumno){
+    echo "No tienes permiso";
+    exit();
+}
+
+// ruta donde guardo los archivos (a lo cutre pero funciona)
+$ruta = "C:/xampp/htdocs/Sintesis2/uploads/" . $nombre;
+
+// si no está el archivo pues error
+if(!file_exists($ruta)){
+    echo "Archivo no encontrado en: " . $ruta;
+    exit();
+}
+
+// headers para que el navegador lo descargue
+header("Content-Type: $tipo");
+header("Content-Disposition: attachment; filename=\"$nombre\"");
+header("Content-Length: " . filesize($ruta));
+
+// enviamos el archivo tal cual
+readfile($ruta);
+exit();

@@ -9,32 +9,15 @@ $clase_id = $_POST['clase_id'];
 $nombre_archivo = $_FILES['archivo']['name'];
 $tipo_archivo = $_FILES['archivo']['type'];
 
-// leer el archivo
-$contenido = file_get_contents($_FILES['archivo']['tmp_name']);
+$ruta_archivo = "../uploads/" . $nombre_archivo;
 
-// guardar en db
-$sql = "INSERT INTO entregas (id_deberes, id_alumno, archivo_nombre, archivo_contenido, archivo_tipo, fecha_entrega) VALUES (?, ?, ?, ?, ?, NOW())";
+move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_archivo);
 
-$stmt = $conn->prepare($sql);
-if(!$stmt){
-    echo "Error prepare: " . $conn->error;
-    exit();
-}
+$sql = "INSERT INTO entregas (id_deberes, id_alumno, archivo_nombre, archivo_contenido, archivo_tipo, fecha_entrega) 
+        VALUES ('$deber_id', '$alumno_id', '$nombre_archivo', '$ruta_archivo', '$tipo_archivo', NOW())";
 
-// unset primero
-$null = NULL;
-$stmt->bind_param("iisss", $deber_id, $alumno_id, $nombre_archivo, $null, $tipo_archivo);
-
-// ahora envia el contenido
-$stmt->send_long_data(3, $contenido);
-
-if(!$stmt->execute()){
-    echo "Error execute: " . $stmt->error;
-    exit();
-}
-$stmt->close();
+$conn->query($sql);
 
 header("Location: ../clases.php?id=" . $clase_id);
 exit();
-?>
 ?>

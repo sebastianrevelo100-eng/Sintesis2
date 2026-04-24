@@ -1,4 +1,4 @@
-/* Estilos para el cuerpo de la página */
+/* estilos basicos de la pagina */
 body {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@ body {
     background-color: #7676ff;
 }
 
-/* Contenedor principal */
+/* contenedor principal donde va el contenido */
 .container {
     background-color: white;
     width: 80%;
@@ -15,23 +15,13 @@ body {
     border-radius: 10px;
 }
 
-/* Título de la clase */
+/* titulo de la clase */
 .titulo-clase {
     text-align: center;
     margin-top: 0;
 }
 
-/* Subtítulo */
-.subtitulo {
-    margin-top: 30px;
-}
-
-/* Formulario para deberes */
-.form-deber {
-    /* Nada especial, solo para agrupar */
-    
-}
-
+/* estilos de los inputs y textarea del formulario de deberes */
 .form-deber input,
 .form-deber textarea {
     padding: 10px;
@@ -42,6 +32,7 @@ body {
     width: 100%;
 }
 
+/* boton del formulario de deberes */
 .form-deber button {
     padding: 10px;
     background-color: #7676ff;
@@ -51,11 +42,7 @@ body {
     cursor: pointer;
 }
 
-.form-deber button:hover {
-    background-color: #7676ff;
-}
-
-/* Cada deber */
+/* estilo de cada tarjeta de deber/entrega */
 .deber {
     background-color: lightgray;
     padding: 15px;
@@ -63,7 +50,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* Botón para entregar */
+/* boton para entregar/descargar archivo */
 .boton-entregar {
     display: inline-block;
     margin-top: 10px;
@@ -74,11 +61,7 @@ body {
     border-radius: 5px;
 }
 
-.boton-entregar:hover {
-    background-color: #7676ff;
-}
-
-/* Botón para volver */
+/* boton para volver a la pagina anterior */
 .volver {
     display: inline-block;
     margin-top: 20px;
@@ -89,15 +72,17 @@ body {
     border-radius: 5px;
 }
 
+/* efecto del boton volver al pasar el mouse */
 .volver:hover {
     background-color: gray;
 }
 
-/* Pestañas */
+/* contenedor de las pestanas */
 .tabs {
     margin-bottom: 20px;
 }
 
+/* estilos de cada pestaña */
 .tabs a {
     display: inline-block;
     padding: 8px 12px;
@@ -108,17 +93,7 @@ body {
     margin-right: 10px;
 }
 
-.tabs a:hover {
-    background-color: #7676ff;
-}
-
-/* Segundo body para otra página */
-body {
-    margin: 0;
-    font-family: Arial;
-}
-
-/* Barra lateral */
+/* menu desplegable de la izquierda */
 .desplegable {
     width: 200px;
     background: white;
@@ -128,20 +103,20 @@ body {
     float: left;
 }
 
-/* Título del desplegable */
+/* titulo del menu desplegable */
 .desplegable-title {
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
 }
 
-/* Lista de clases */
+/* lista de clases en el desplegable (oculta por defecto) */
 .lista-clases {
     display: none;
     margin-top: 10px;
 }
 
-/* Cada clase */
+/* cada item de clase en el desplegable */
 .clase-item {
     display: block;
     padding: 8px;
@@ -152,11 +127,12 @@ body {
     color: black;
 }
 
+/* efecto al pasar el mouse sobre una clase */
 .clase-item:hover {
     background: gray;
 }
 
-/* Contenido principal */
+/* contenido principal (cuando hay desplegable) */
 .contenido {
     margin-left: 240px;
     padding: 20px;
