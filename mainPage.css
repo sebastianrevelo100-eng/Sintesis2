@@ -1,53 +1,49 @@
 /* mainPage.css versión principiante */
 
-*{
-    text-decoration: none !important;
-}
-
 body{
-margin:0;
-padding:0;
-font-family: Arial, Helvetica, sans-serif;
-background-color: #7676ff;
+    margin:0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: red;
 }
 
 /* Menú */
 .menu{
-background-color: white;
-padding:30px;
-border-bottom:2px solid rgb(188,187,255);
-display: flex;
-justify-content: space-between;
-align-items: right;    
+    background-color: white;
+    padding:30px;
+    border-bottom:2px solid rgb(188,187,255);
+    display: flex;
+    justify-content: space-between;
+    align-items: right;    
 }
 
 /* Título */
 .menu h2{
-margin:0;
-font-size:22px;
-color:black;
+    margin:0;
+    font-size:22px;
+    color:black;
 }
 
 /* Lista del menú */
 .menu ul{
-list-style:none;
-margin:0;
-padding:0;
-display: flex;
-border-radius:5px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    display: flex;
+    border-radius:5px;
 }
 
 .menu ul li{
-margin: 0;
+    margin: 0;
 }
 
 .menu ul li a{
-text-decoration:none;
-color:black;
-font-size:18px;
-padding:5px 10px;
-border:1px solid rgb(225,225,225);
-border-radius:5px;
+    text-decoration:none;
+    color:black;
+    font-size:18px;
+    padding:5px 10px;
+    border:1px solid rgb(225,225,225);
+    border-radius:5px;
 }
 
 /* texto les meves clases */

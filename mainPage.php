@@ -18,6 +18,7 @@ $rol = $_SESSION['rol'];
     <meta charset="UTF-8">
     <title>EduMain - Página principal</title>
     <link rel="stylesheet" href="mainPage.css">
+    <link 
     <script>
 
         
