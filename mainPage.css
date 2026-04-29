@@ -143,3 +143,7 @@ h3{
 .perfil-menu.show {
     display: block;
 }
+
+.botonAceptar{
+    background-color: red;
+}

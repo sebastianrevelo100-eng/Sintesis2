@@ -69,6 +69,8 @@ $rol = $_SESSION['rol'];
     <?php endif; ?>
 </div>
 
+
+
 <h3>Les meves classes</h3>
 
 <?php
@@ -129,7 +131,13 @@ $conn->close();
 ">
     Este sitio utiliza cookies para mejorar la experiencia.
     <form action="aceptarCookies.php" method="POST" style="display:inline;">
-        <button type="submit" style="margin-left:10px; padding:5px 10px;">Aceptar</button>
+        <button class="botonAceptar" type="submit" style="margin-left:10px; padding:5px 10px;">Aceptar</button>
+    </form>
+    <form action="aceptarCookies.php" method="POST" style="display:inline;">
+        <button class="botonAceptar" type="submit" style="margin-left:10px; padding:5px 10px;">Aceptar solo esenciales</button>
+    </form>
+    <form action="aceptarCookies.php" method="POST" style="display:inline;">
+        <button class="botonRechazar" type="submit" style="margin-left:10px; padding:5px 10px;">Rechazar</button>
     </form>
 </footer>
 <?php endif; ?>
