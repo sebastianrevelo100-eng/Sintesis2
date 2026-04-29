@@ -18,7 +18,7 @@ $rol = $_SESSION['rol'];
     <meta charset="UTF-8">
     <title>EduMain - Página principal</title>
     <link rel="stylesheet" href="mainPage.css">
-    <link 
+    <link>
     <script>
 
         
@@ -74,7 +74,11 @@ $rol = $_SESSION['rol'];
 <?php
 include 'php/conexion.php'; // nos conectamos a la base de datos
 
-
+if (!isset($_COOKIE['cookies_aceptadas'])) {
+    $mostrarFooterCookies = true;
+} else {
+    $mostrarFooterCookies = false;
+}
 
 // Muestra las clases depende si eres profe o alumno
 if($rol == 'alumno'){ 
@@ -107,8 +111,28 @@ if($rol == 'profesor'){
 }
 
 
+
+
 $conn->close();
 ?>
+
+<?php if ($mostrarFooterCookies): ?>
+<footer style="
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+">
+    Este sitio utiliza cookies para mejorar la experiencia.
+    <form action="aceptarCookies.php" method="POST" style="display:inline;">
+        <button type="submit" style="margin-left:10px; padding:5px 10px;">Aceptar</button>
+    </form>
+</footer>
+<?php endif; ?>
 
 </body>
 </html>
