@@ -1,98 +1,130 @@
 body{
-background-color: #7676ff;
-font-family: Arial;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    font-family: Arial;
+    min-height: 82vh;
 }
 
 .container{
-width: 400px;
-margin: 120px auto;
-background: #333;
-padding: 50px;
-text-align: center;
-box-shadow: 20px 20px 20px black;
-border-radius: 15px;
-align-content: center;
+    height: 480px;
+    width: 400px;
+    margin: 120px auto;
+    padding: 50px;
+    text-align: center;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.500);
+    border-radius: 15px;
+    align-content: center;
+    background-color: rgba(51, 51, 51, 0.100);
+    position: relative; top: -60px;
+}
+
+.imagen{
+    position: relative; top: -40px;
+    height: 120px;
+    width: 180px;
 }
 
 .textoRegistro{
-font-size: 25px;
-color:white;
-margin-bottom: 10px;
-position: relative; top: -20px;
+    font-size: 25px;
+    color:white;
+    margin-bottom: 10px;
+    position: relative; top: -50px;
 }
 
 .inputNombre{
-width: 100%;
-padding: 8px;
-border:1px solid black;
-margin-bottom: 10px;
-border-radius: 5px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.6s;
+    background-color: rgba(255, 255, 255, 0.100);
+    border-color: #667eea;
+}
+.inputNombre::placeholder{
+    color: #ffffff9a;
 }
 .inputNombre:hover{
-    border-color: #7676ff;
-    transition: 0.3s;
-    border-width: 1px;
-    background-color: #ffffffd1;
+    background: rgba(255, 255, 255, 0);
+    transition: 0.6s;
+}
+.inputNombre:hover::placeholder{
+    color: white;
+    transition: 0.6s;
 }
 
 .inputCorreo{
-width: 100%;
-padding: 8px;
-border:1px solid black;
-margin-bottom: 10px;
-border-radius: 5px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.6s;
+    background-color: rgba(255, 255, 255, 0.100);
+    border-color: #667eea;
+}
+.inputCorreo::placeholder{
+    color: #ffffff9a;
 }
 .inputCorreo:hover{
-    border-color: #7676ff;
-    transition: 0.3s;
-    border-width: 1px;
-    background-color: #ffffffd1;
+    background: rgba(255, 255, 255, 0);
+    transition: 0.6s;
+}
+.inputCorreo:hover::placeholder{
+    color: white;
+    transition: 0.6s;
 }
 
 .inputContraseña{
-width: 100%;
-padding: 8px;
-border:1px solid black;
-margin-bottom: 10px;
-border-radius: 5px;
-justify-content: center;
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.6s;
+    background-color: rgba(255, 255, 255, 0.100);
+    border-color: #667eea;
+}
+.inputContraseña::placeholder{
+    color: #ffffff9a;
 }
 .inputContraseña:hover{
-    border-color: #7676ff;
-    transition: 0.3s;
-    border-width: 1px;
-    background-color: #ffffffd1;
+    background: rgba(255, 255, 255, 0);
+    transition: 0.6s;
+}
+.inputContraseña:hover::placeholder{
+    color: white;
+    transition: 0.6s;
 }
 
 .seleccionRol{
-width: 100%;
-padding: 8px;
-border:1px solid black;
-margin-bottom: 10px;
-border-radius: 5px;
-justify-content: center;
+    width: 105%;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.6s;
+    background-color: rgba(255, 255, 255, 0.100);
+    border-color: #667eea;
+    color: #ffffff9a;
 }
 .seleccionRol:hover{
-    border-color: #7676ff;
-    transition: 0.3s;
-    background-color: #ffffffd1;
+    background: rgba(255, 255, 255, 0);
+    color: black;
+    transition: 0.6s;
+}
+.seleccionRol:hover::placeholder{
+    color: white;
+    transition: 0.6s;
 }
 
 .botonSubmit{
-padding: 10px;
-background: #3636ff;
-position: relative; bottom: -20px;
-color: black;
-border: none;
-width: 100%;
-border-color: #3636ff;
-border-style: solid;
-border-radius: 5px;
+    padding: 10px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    transition: 0.6s;
+    cursor: pointer;
 }
 .botonSubmit:hover{
-    background-color: #333;
-    transition: 0.3s;
-    color: white;
-    transform: scale(1.05);
-    transition: 0.5s;
+    box-shadow: 0 0 30px #ffffff38, 0 0 30px #ffffff38;
+    transform: scale(1.02);
+    transition: 0.6s;
 }

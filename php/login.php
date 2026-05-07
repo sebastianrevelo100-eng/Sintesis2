@@ -17,7 +17,6 @@ if (!empty($_POST['correo']) && !empty($_POST['contraseña'])) {
 
         // comparacion directa
         if ($contraseña == $usuario['contraseña']) {
-
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nombre'] = $usuario['nombre'];
             $_SESSION['rol'] = $usuario['rol'];
@@ -31,7 +30,7 @@ if (!empty($_POST['correo']) && !empty($_POST['contraseña'])) {
 
     } else {
         echo "Usuario no encontrado";
-    }
+    }   
 
 } else {
     echo "Rellena los campos";
