@@ -9,7 +9,7 @@ $opcion = $_POST['opcion'];
 setcookie("cookies_aceptadas", $opcion, time() + 10, "/"); //reinicia el footer de les cookies als 10 segons
 
 
-if (isset($_SESSION['id'])) { //agafa el id de la sessio
+if (isset($_SESSION['id'])) { //agafa el id de la sessió
     $id = $_SESSION['id'];
 
     $sql = "UPDATE usuarios SET cookies = ? WHERE id = ?"; //actualiza la taula de cookies a la base de dades
