@@ -31,11 +31,11 @@ $tab = $_GET['tab'] ?? 'anuncios';
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title><?php echo $clase['nombre']; ?></title>
-<link rel="stylesheet" href="clases.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title><?php echo $clase['nombre']; ?></title>
+        <link rel="stylesheet" href="clases.css">
+        </head>
 <body>
 
 <?php include 'desplegable.php'; ?>
@@ -83,6 +83,7 @@ if($tab == "actividades"){
             <button type="submit">Crear deber</button>
         </form>
         <hr>
+        </html>
         ';
     }
 
