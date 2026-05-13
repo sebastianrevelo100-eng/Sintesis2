@@ -1,5 +1,7 @@
 <html>
-    <link rel="stylesheet" href="../php/crearclase.css">
+    <head>
+        <link rel="stylesheet" href="../codigoClase.css">
+    </head>
 </html>
 
 <?php
@@ -48,10 +50,22 @@ if(isset($_POST['nombre'])){
 function copiarCodigo() {
     const codigo = document.getElementById("codigoClase").innerText;
 
-    navigator.clipboard.writeText(codigo).then(() => {
-        alert("Código copiado: " + codigo);
-    }).catch(err => {
-        console.error("Error al copiar:", err);
-    });
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(codigo)
+            .then(() => alert("Código copiado: " + codigo))
+            .catch(() => copiarFallback(codigo));
+    } else {
+        copiarFallback(codigo);
+    }
+}
+
+function copiarFallback(texto) {
+    const textarea = document.createElement("textarea");
+    textarea.value = texto;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+
 }
 </script>

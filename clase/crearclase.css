@@ -87,3 +87,26 @@ input[type="submit"]:hover{
 .volver:hover{
     transform: scale(1.1);
 }
+
+.codigo-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.boton-copiar{
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: 0.4s;
+}
+
+.boton-copiar:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}

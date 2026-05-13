@@ -69,20 +69,20 @@ if(isset($_POST['cambiarPassword'])){
     $actual = $_POST['actual'];
     $nueva = $_POST['nueva'];
 
-    $sql = "SELECT contrasena FROM usuarios WHERE id='$id'";
+    $sql = "SELECT contraseña FROM usuarios WHERE id='$id'";
     $res = $conn->query($sql);
     $user = $res->fetch_assoc();
 
-    if($actual == $user['contrasena']){
+    if($actual == $user['contraseña']){
 
         $sqlUpdate = "UPDATE usuarios 
-                      SET contrasena='$nueva' 
+                      SET contraseña='$nueva' 
                       WHERE id='$id'";
 
         if($conn->query($sqlUpdate)){
-            echo "<p>Contraseña actualizada</p>";
+            echo "<script>alert('Contraseña actualizada');</script>";
         } else {
-            echo "Error al actualizar";
+            echo "<script>alert('Contraseña incorrecta');</script>";
         }
 
     } else {
