@@ -1,7 +1,7 @@
 body{
     background: linear-gradient(45deg, #667eea, #764ba2);
     font-family: Arial;
-    min-height: 82vh;
+    min-height: 100vh;
 }
 
 .container{

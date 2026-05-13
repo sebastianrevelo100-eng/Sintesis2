@@ -110,7 +110,45 @@ if($tab == "actividades"){
 // =========================
 if($tab == "personas"){
     echo "<h2>Personas</h2>";
-    echo "<p>Aquí puedes ver las personas que pertenecen a la clase.</p>";
+
+    //PROFESOR
+    $sql_profe = "SELECT nombre, correo FROM usuarios
+              WHERE id = (SELECT profesor_id FROM clases WHERE id='$clase_id')";
+
+    $res_profe = $conn->query($sql_profe);
+
+    if($res_profe && $res_profe->num_rows > 0){
+        $profe = $res_profe->fetch_assoc();
+
+        echo "<h3>Profesor</h3>";
+        echo "<p class='persona profe'>" . htmlspecialchars($profe['nombre']) .
+            " (" . htmlspecialchars($profe['correo']) . ")" .
+            "</p>";
+}
+
+    //ALUMNOS
+    $sql_alumnos = "SELECT u.nombre, u.correo
+                    FROM usuarios u
+                    INNER JOIN alumnos_clases ac ON u.id = ac.alumno_id
+                    WHERE ac.clase_id='$clase_id'";
+
+    $res_alumnos = $conn->query($sql_alumnos);
+
+    echo "<h3>Alumnos</h3>";
+
+    if($res_alumnos && $res_alumnos->num_rows > 0){
+        echo "<div class='lista-personas'>";
+        
+        while($alumno = $res_alumnos->fetch_assoc()){
+            echo "<div class='persona'>" . htmlspecialchars($alumno['nombre']) . 
+            " (" . htmlspecialchars($alumno['correo']) . ")" .
+            "</div>";
+        }
+
+        echo "</div>";
+    } else {
+        echo "<p>No hay alumnos en esta clase.</p>";
+    }
 }
 
 // =========================

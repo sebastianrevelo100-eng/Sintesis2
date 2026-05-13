@@ -1,18 +1,15 @@
 <?php
 session_start();
-include "php/conexion.php"; 
-
+include "php/conexion.php";
 
 $opcion = $_POST['opcion'];
 
+setcookie("cookies_aceptadas", $opcion, time() + 10, "/");
 
-setcookie("cookies_aceptadas", $opcion, time() + 10, "/"); //reinicia el footer de les cookies als 10 segons
-
-
-if (isset($_SESSION['id'])) { //agafa el id de la sessió
+if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
 
-    $sql = "UPDATE usuarios SET cookies = ? WHERE id = ?"; //actualiza la taula de cookies a la base de dades
+    $sql = "UPDATE usuarios SET cookies = ?, horaCookies = NOW() WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si", $opcion, $id);
     $stmt->execute();
@@ -21,4 +18,3 @@ if (isset($_SESSION['id'])) { //agafa el id de la sessió
 header("Location: mainPage.php");
 exit;
 ?>
-

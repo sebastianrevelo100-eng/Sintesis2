@@ -92,15 +92,21 @@ h3{
     border: 2px solid #ddd;
 }
 
+
 .botonPerfil{
-    border-radius: 5px;
-    border: 10px;
-    border-color: black;
-    color: red;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px;
+
+
+    transition: 0.6s;
 }
 
 .botonPerfil:hover{
-    color: red;
+    transform: scale(1.1);
+    transition: 0.6s;
+    
 }
 .perfil-container {
     position: absolute;
@@ -146,5 +152,82 @@ h3{
 }
 
 .botonAceptar{
-    background-color: red;
+    background-color: rgba(255, 255, 255, 0.100);
+    border-radius: 5px;
+    color: white;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.5);
+    transition: 0.6s;
+}
+.botonAceptar:hover{
+    transform: scale(1.05);
+}
+
+.botonAceptarEsenc{
+    background-color: rgb(255, 255, 255, 0.100);
+    border-radius: 5px;
+    color: white;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.5);
+    transition: 0.6s;
+}
+.botonAceptarEsenc:hover{
+    transform: scale(1.05);
+}
+
+.botonRechazar{
+    background-color: rgb(255, 255, 255, 0.100);
+    border-radius: 5px;
+    color: white;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.5);
+    transition: 0.6s;
+}
+.botonRechazar:hover{
+    transform: scale(1.05);
+}
+
+.footerCookies{
+    width: 100%;
+    max-width: 2000px;
+    margin: auto;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(10px);
+    left: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+summary{
+    background-color: black;
+    padding: 10px;
+    transition: 0.5s;
+}
+
+.botonMasDeta{
+    cursor: pointer;
+    font-weight: bold;
+    width: 120px;
+    background-color: transparent;
+}
+
+.botonMasDeta:hover{
+    transform: scale(1.05);
+}
+
+details{
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(10px);
+}
+
+details .content{
+    background-color: rgba(255, 255, 255, 0);
+}
+
+details[open]{
+    background-color: transparent;
 }

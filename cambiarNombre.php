@@ -1,49 +1,28 @@
 <?php
+// iniciamos sesion para verificar que el usuario este logeado
 session_start();
-include "php/conexion.php";
+// traemos la conexion a la bd
+include 'php/conexion.php';
 
+// verificamos que el usuario este logeado
+if(!isset($_SESSION['id'])){
+    header("Location: login.html");
+    exit();
+}
+
+// obtenemos el id del usuario logeado
 $id = $_SESSION['id'];
+// obtenemos la nueva contrasena que ingreso el usuario
+$nueva_contrasena = $_POST['nueva_contrasena'];
 
-// CAMBIAR NOMBRE
-if (isset($_POST['cambiar_nombre'])) {
-    $nuevo = $_POST['nuevo_nombre'];
-    $conn->query("UPDATE usuarios SET nombre='$nuevo' WHERE id=$id");
-    $_SESSION['nombre'] = $nuevo;
-    header("Location: editar_perfil.php");
-    exit;
-}
+// hacemos un update a la tabla usuarios con la nueva contrasena
+$sql = "UPDATE usuarios SET contraseña='$nueva_contrasena' WHERE id='$id'";
 
-// CAMBIAR CORREO
-if (isset($_POST['cambiar_correo'])) {
-    $nuevo = $_POST['nuevo_correo'];
-    $conn->query("UPDATE usuarios SET email='$nuevo' WHERE id=$id");
-    $_SESSION['email'] = $nuevo;
-    header("Location: editar_perfil.php");
-    exit;
-}
-
-// CAMBIAR CONTRASEÑA
-if (isset($_POST['cambiar_contrasena'])) {
-
-    $actual = $_POST['actual'];
-    $nueva = $_POST['nueva'];
-
-    // Obtener contraseña actual
-    $sql = $conn->query("SELECT password FROM usuarios WHERE id=$id");
-    $user = $sql->fetch_assoc();
-
-    // Verificar contraseña actual
-    if (password_verify($actual, $user['password'])) {
-
-        $hashNueva = password_hash($nueva, PASSWORD_DEFAULT);
-        $conn->query("UPDATE usuarios SET password='$hashNueva' WHERE id=$id");
-
-        header("Location: editar_perfil.php?ok=1");
-        exit;
-
-    } else {
-        header("Location: editar_perfil.php?error=1");
-        exit;
-    }
+// si el update fue exitoso redirigimos a perfil
+if($conn->query($sql) === TRUE){
+    echo "Contrasena cambio";
+    echo "<a href='perfil.php'>Volver a perfil</a>";
+} else {
+    echo "Error: " . $conn->error;
 }
 ?>

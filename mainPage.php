@@ -43,9 +43,7 @@ $rol = $_SESSION['rol'];
 
 </head>
 
-<div>
-    <a class="botonPerfil" href="cambiarNombre.php">perfil</a>
-</div>
+
 
 <body>
 
@@ -69,7 +67,9 @@ $rol = $_SESSION['rol'];
     <?php endif; ?>
 </div>
 
-
+<div class="perfilDiv">
+    <a class="botonPerfil" href="perfil.php">Perfil</a>
+</div>
 
 <h3>Les meves classes</h3>
 
@@ -119,58 +119,50 @@ $conn->close();
 ?>
 
 <?php if ($mostrarFooterCookies): ?>
-<footer style="
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #222;
-    color: white;
-    padding: 15px;
-    text-align: center;
-">
+<footer class="footerCookies">
     Este sitio utiliza cookies para mejorar la experiencia.
     <form action="cookiesHandler.php" method="POST" style="display:inline;">
-        <button type="submit" name="opcion" value="Aceptar">Aceptar</button>
+        <button  class="botonAceptar" type="submit" name="opcion" value="Aceptar">Aceptar</button>
     </form>
 
     <form action="cookiesHandler.php" method="POST" style="display:inline;">
-        <button type="submit" name="opcion" value="Aceptar esenciales">Aceptar solo esenciales</button>
+        <button class="botonAceptarEsenc" type="submit" name="opcion" value="Aceptar esenciales">Aceptar solo esenciales</button>
     </form>
 
     <form action="cookiesHandler.php" method="POST" style="display:inline;">
-        <button type="submit" name="opcion" value="Rechazar">Rechazar</button>
+        <button class="botonRechazar" type="submit" name="opcion" value="Rechazar">Rechazar</button>
     </form>
 
     
-    <details style="margin-top: 10px; padding: 10px; background: #222; border-radius: 5px;">
-    <summary style="cursor: pointer; font-weight: bold;">Más detalles</summary>
+    <details style="margin-top: 10px; padding: 10px; background: transparent; border-radius: 5px; width: 1230px">
+    <summary class="botonMasDeta">Más detalles</summary>
+    <div class="content">
+        <h4>Necessàries</h4>
+        <p>
+            Les galetes necessàries ajuden a fer que un lloc web sigui utilitzable permetent funcions bàsiques 
+            com la navegació per la pàgina i l'accés a àrees segures del lloc web. 
+            El lloc web no pot funcionar correctament sense aquestes galetes.
+        </p>
 
-    <h4>Necessàries</h4>
-    <p>
-        Les galetes necessàries ajuden a fer que un lloc web sigui utilitzable permetent funcions bàsiques 
-        com la navegació per la pàgina i l'accés a àrees segures del lloc web. 
-        El lloc web no pot funcionar correctament sense aquestes galetes.
-    </p>
+        <h4>Estadístiques</h4>
+        <p>
+            Les galetes estadístiques ajuden els propietaris de llocs web a entendre com interactuen els visitants 
+            amb els llocs web mitjançant la recopilació i la presentació d'informació de manera anònima.
+        </p>
 
-    <h4>Estadístiques</h4>
-    <p>
-        Les galetes estadístiques ajuden els propietaris de llocs web a entendre com interactuen els visitants 
-        amb els llocs web mitjançant la recopilació i la presentació d'informació de manera anònima.
-    </p>
+        <h4>Preferències</h4>
+        <p>
+            Les galetes de preferències permeten que un lloc web recordi informació que canvia el comportament 
+            o l'aspecte del lloc web, com ara el vostre idioma preferit o la regió on us trobeu.
+        </p>
 
-    <h4>Preferències</h4>
-    <p>
-        Les galetes de preferències permeten que un lloc web recordi informació que canvia el comportament 
-        o l'aspecte del lloc web, com ara el vostre idioma preferit o la regió on us trobeu.
-    </p>
-
-    <h4>Màrqueting</h4>
-    <p>
-        Les galetes de màrqueting s'utilitzen per fer un seguiment dels visitants a través de llocs web. 
-        La intenció és mostrar anuncis que siguin rellevants i atractius per a l'usuari individual i, 
-        per tant, més valuosos per als editors i anunciants externs.
-    </p>
+        <h4>Màrqueting</h4>
+        <p>
+            Les galetes de màrqueting s'utilitzen per fer un seguiment dels visitants a través de llocs web. 
+            La intenció és mostrar anuncis que siguin rellevants i atractius per a l'usuari individual i, 
+            per tant, més valuosos per als editors i anunciants externs.
+        </p>
+    </div>
 </details>
 
 
