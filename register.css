@@ -122,6 +122,7 @@ body{
     border-radius: 10px;
     transition: 0.6s;
     cursor: pointer;
+    position: relative; left: 10px;
 }
 .botonSubmit:hover{
     box-shadow: 0 0 30px #ffffff38, 0 0 30px #ffffff38;

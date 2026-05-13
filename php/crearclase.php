@@ -1,38 +1,55 @@
+<link rel="style" href="crearclase.css">
+
 <?php
 session_start();
 include 'conexion.php';
 
-// si no eres profes no puedes crear una clase
+// si no eres profe no puedes crear una clase
 if(!isset($_SESSION['id']) || $_SESSION['rol'] != 'profesor'){
-    die("no tienes permiso para crear clases");
+    die("<p class='error'>No tienes permiso para crear clases</p>");
 }
 
 // si llegaron los datos del formulario
 if(isset($_POST['nombre'])){
-    $nombre = $_POST['nombre']; // nombre de la clase
-    $descripcion = $_POST['descripcion']; // descripcion
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
     $profesor_id = $_SESSION['id'];
 
     // codigo de 6 letras y numeros
     $codigo = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 0, 6);
 
-    // guardar en la base de datos
     $sql = "INSERT INTO clases (nombre, descripcion, profesor_id, codigo)
-
             VALUES ('$nombre','$descripcion','$profesor_id','$codigo')";    
 
-
-
     if($conn->query($sql) === TRUE){
-        // mostrar mensaje y link a la clase
-        echo "clase creada! codigo: $codigo <br>";
-        echo "<a href='../clases.php?id=".$conn->insert_id."'>ir a la pagina de la clase</a><br>";
-        echo "<a href='../mainPage.php'>volver al menu</a>";
+        echo "<div class='resultado'>";
+
+        echo "<h2 class='success'>Clase creada!</h2>";
+        echo "<div class='codigo-container'>";
+        echo "<p class='codigo'>Código: <strong id='codigoClase'>$codigo</strong></p>";
+        echo "<button class='boton-copiar' onclick='copiarCodigo()'>Copiar</button>";
+        echo "</div>";
+
+        echo "<a class='boton-link' href='../clases.php?id=".$conn->insert_id."'>Ir a la clase</a>";
+        echo "<a class='boton-link secundario' href='../mainPage.php'>Volver al menú</a>";
+
+        echo "</div>";
     } else {
-        echo "error al crear clase";
+        echo "<p class='error'>Error al crear clase</p>";
     }
 
 } else {
-    echo "por favor completa el formulario";
+    echo "<p class='error'>Por favor completa el formulario</p>";
 }
 ?>
+<script>
+function copiarCodigo() {
+    const codigo = document.getElementById("codigoClase").innerText;
+
+    navigator.clipboard.writeText(codigo).then(() => {
+        alert("Código copiado: " + codigo);
+    }).catch(err => {
+        console.error("Error al copiar:", err);
+    });
+}
+</script>

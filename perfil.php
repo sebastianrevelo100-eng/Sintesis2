@@ -15,8 +15,9 @@ $res = $conn->query($sql);
 $user = $res->fetch_assoc();
 ?>
 
-<h2>Mi perfil</h2>
-
+<link rel="stylesheet" href="perfil.css">
+<h2 class="textoMiPerfil">Mi perfil</h2>
+<div class="container">
 <!-- 🔹 EDITAR NOMBRE Y CORREO -->
 <h3>Editar datos</h3>
 <form action="perfil.php" method="POST">
@@ -27,7 +28,7 @@ $user = $res->fetch_assoc();
 
 <hr>
 
-<!-- 🔐 CAMBIAR CONTRASEÑA -->
+<!-- CAMBIAR CONTRASEÑA -->
 <h3>Cambiar contraseña</h3>
 <form action="perfil.php" method="POST">
     <input type="password" name="actual" placeholder="Contraseña actual" required>
@@ -38,6 +39,8 @@ $user = $res->fetch_assoc();
 <hr>
 
 <a href="mainPage.php">Volver</a>
+
+</div>
 
 <?php
 // ========================

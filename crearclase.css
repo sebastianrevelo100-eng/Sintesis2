@@ -1,0 +1,95 @@
+/* crearclase_resultado.css */
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    min-height: 100vh;
+}
+
+/* CONTENEDOR */
+.resultado{
+    width: 400px;
+    margin: 120px auto;
+    padding: 40px;
+    text-align: center;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* TITULO */
+.success{
+    color: white;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* CODIGO */
+.codigo{
+    color: #ffffffcc;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.codigo strong{
+    color: #fff;
+    font-size: 20px;
+}
+
+/* BOTONES */
+.boton-link{
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+    text-decoration: none;
+    color: white;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: 0.4s;
+}
+
+.boton-link:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* BOTON SECUNDARIO */
+.secundario{
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ERRORES */
+.error{
+    color: #ffb3b3;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 18px;
+}
+
+.codigo-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.boton-copiar{
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: 0.4s;
+}
+
+.boton-copiar:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}

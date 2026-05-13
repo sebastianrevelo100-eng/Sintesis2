@@ -134,7 +134,7 @@ $conn->close();
     </form>
 
     
-    <details style="margin-top: 10px; padding: 10px; background: transparent; border-radius: 5px; width: 1230px">
+    <details style="margin-top: 10px; padding: 10px; background: transparent; border-radius: 5px; width: 99%">
     <summary class="botonMasDeta">Más detalles</summary>
     <div class="content">
         <h4>Necessàries</h4>

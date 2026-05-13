@@ -1,10 +1,8 @@
 /* Estilos para el cuerpo de la página */
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(45deg, #667eea, #764ba2);
-    min-height: 681px;
+    min-height: 100vh;
 }
 
 /* Contenedor principal */
