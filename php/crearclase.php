@@ -1,4 +1,6 @@
-<link rel="style" href="crearclase.css">
+<html>
+    <link rel="stylesheet" href="../php/crearclase.css">
+</html>
 
 <?php
 session_start();
