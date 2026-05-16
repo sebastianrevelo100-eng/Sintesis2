@@ -38,8 +38,6 @@ $tab = $_GET['tab'] ?? 'anuncios';
         </head>
 <body>
 
-<?php include 'desplegable.php'; ?>
-
 <div class="container">
 
 <h1 class="titulo-clase"><?php echo $clase['nombre']; ?></h1>
@@ -83,7 +81,6 @@ if($tab == "actividades"){
             <button type="submit">Crear deber</button>
         </form>
         <hr>
-        </html>
         ';
     }
 
@@ -93,11 +90,16 @@ if($tab == "actividades"){
 
     if($res_deberes && $res_deberes->num_rows > 0){
         while($deberes = $res_deberes->fetch_assoc()){
-            echo "<div class='deber'>";
-            echo "<h3>".htmlspecialchars($deberes['titulo'])."</h3>";
+            echo "<div class='actividad-card'>";
+            echo "<div class='actividad-card-header'>";
+            echo "<div><h3>".htmlspecialchars($deberes['titulo'])."</h3>";
+            echo "<p class='actividad-tipo'>Tarea</p></div>";
+            echo "<span class='actividad-fecha'>Fecha límite: ".$deberes['fecha_limite']."</span>";
+            echo "</div>";
             echo "<p>".htmlspecialchars($deberes['descripcion'])."</p>";
-            echo "<p>Fecha límite: ".$deberes['fecha_limite']."</p>";
-            echo "<a class='boton-entregar' href='entregar.php?id=".$deberes['id']."&clase_id=".$clase_id."'>Entregar archivo</a>";
+            echo "<div class='actividad-card-footer'>";
+            echo "<a class='botonVerAct' href='actividad.php?id=".$deberes['id']."'>Ver actividad</a>";
+            echo "</div>";
             echo "</div>";
         }
     } else {

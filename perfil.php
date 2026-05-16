@@ -18,7 +18,7 @@ $user = $res->fetch_assoc();
 <link rel="stylesheet" href="perfil.css">
 <h2 class="textoMiPerfil">Mi perfil</h2>
 <div class="container">
-<!-- 🔹 EDITAR NOMBRE Y CORREO -->
+<!-- EDITAR NOMBRE Y CORREO -->
 <h3>Editar datos</h3>
 <form action="perfil.php" method="POST">
     <input class="inputNombre" type="text" name="nombre" value="<?php echo $user['nombre']; ?>" required>

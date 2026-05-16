@@ -59,6 +59,145 @@ body {
     margin-bottom: 15px;
 }
 
+.actividad-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+    box-shadow: 2px 16px 20px rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(60px);
+}
+
+.actividad-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.actividad-card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.actividad-tipo {
+    margin: 6px 0 0;
+    font-size: 0.85rem;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.actividad-fecha {
+    background: rgba(224, 232, 255, 0.5);
+    color: #3730a3;
+    padding: 8px 12px;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+}
+
+.actividad-card-footer {
+    margin-top: 16px;
+}
+
+.botonVerAct{
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    color: black;
+
+    transition: 0.6s;
+}
+
+.botonVerAct:hover {
+    background-color: rgb(118, 118, 255, 0.5);
+    backdrop-filter: blur(10px);
+    color: white;
+
+    transition: 0.6s;
+}
+
+.actividad-detalle {
+    background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 24px;
+}
+
+.actividad-header {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.actividad-header h1 {
+    margin: 0 0 10px;
+    font-size: 2rem;
+}
+
+.actividad-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.actividad-meta .meta-item {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 9999px;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+}
+
+.actividad-main {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 24px;
+}
+
+.actividad-badge {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #4338ca;
+    color: white;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.actividad-contenido h2 {
+    margin-top: 0;
+}
+
+.actividad-aside {
+    display: grid;
+    gap: 16px;
+}
+
+.actividad-card+ .actividad-card {
+    margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+    .actividad-main {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Botón para entregar */
 .boton-entregar {
     display: inline-block;

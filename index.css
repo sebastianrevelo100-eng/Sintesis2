@@ -10,7 +10,7 @@ body{
     align-items: center;
 }
 
-/* ===== CONTENEDOR ===== */
+
 .container{
     width: 450px;
     padding: 40px;
@@ -21,7 +21,7 @@ body{
     backdrop-filter: blur(10px);
 }
 
-/* ===== BOTONES ===== */
+
 .button{
     display: block;
     width: 100%;
