@@ -2,6 +2,12 @@
 // Iniciamos la sesión para poder usar $_SESSION
 session_start();
 
+// Aquesta pàgina mostra tota la informació d'una classe.
+// Explicació per a no tècnics:
+// - Veureu el nom i la descripció de la classe.
+// - Hi ha pestanyes: Anuncis, Activitats, Entregues i Persones.
+// - Segons si ets professor o alumne, podràs fer accions diferents (crear deures, posar notes, etc.).
+
 // Incluimos la conexión a la base de datos
 include 'php/conexion.php';
 
@@ -27,6 +33,7 @@ if($res && $res->num_rows > 0){
 }
 
 $tab = $_GET['tab'] ?? 'anuncios';
+$basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +41,7 @@ $tab = $_GET['tab'] ?? 'anuncios';
     <head>
         <meta charset="UTF-8">
         <title><?php echo $clase['nombre']; ?></title>
-        <link rel="stylesheet" href="clases.css">
+        <link rel="stylesheet" href="<?php echo $basePath; ?>/clases.css">
         </head>
 <body>
 
@@ -45,10 +52,10 @@ $tab = $_GET['tab'] ?? 'anuncios';
 
 <!-- PESTAÑAS -->
 <div class="tabs">
-    <a href="clases.php?id=<?php echo $clase_id; ?>&tab=anuncios">Anuncios</a>
-    <a href="clases.php?id=<?php echo $clase_id; ?>&tab=actividades">Actividades</a>
-    <a href="clases.php?id=<?php echo $clase_id; ?>&tab=entregas">Entregas</a>
-    <a href="clases.php?id=<?php echo $clase_id; ?>&tab=personas">Personas</a>
+    <a href="<?php echo $basePath; ?>/clases.php?id=<?php echo $clase_id; ?>&tab=anuncios">Anuncios</a>
+    <a href="<?php echo $basePath; ?>/clases.php?id=<?php echo $clase_id; ?>&tab=actividades">Actividades</a>
+    <a href="<?php echo $basePath; ?>/clases.php?id=<?php echo $clase_id; ?>&tab=entregas">Entregas</a>
+    <a href="<?php echo $basePath; ?>/clases.php?id=<?php echo $clase_id; ?>&tab=personas">Personas</a>
 </div>
 
 <hr>
@@ -98,7 +105,7 @@ if($tab == "actividades"){
             echo "</div>";
             echo "<p>".htmlspecialchars($deberes['descripcion'])."</p>";
             echo "<div class='actividad-card-footer'>";
-            echo "<a class='botonVerAct' href='actividad.php?id=".$deberes['id']."'>Ver actividad</a>";
+            echo "<a class='botonVerAct' href='" . $basePath . "/actividad.php?id=" . $deberes['id'] . "'>Ver actividad</a>";
             echo "</div>";
             echo "</div>";
         }
@@ -110,6 +117,10 @@ if($tab == "actividades"){
 // =========================
 //      PESTAÑA PERSONAS
 // =========================
+// PESTAÑA PERSONES
+// Aquí veus qui participa a la classe.
+// - El professor apareix a dalt.
+// - Sota hi ha la llista d'alumnes. Si ets professor, pots treure un alumne d'aquesta llista.
 if($tab == "personas"){
     echo "<h2>Personas</h2>";
 
@@ -129,7 +140,7 @@ if($tab == "personas"){
 }
 
     //ALUMNOS
-    $sql_alumnos = "SELECT u.nombre, u.correo
+    $sql_alumnos = "SELECT u.id as alumno_id, u.nombre, u.correo
                     FROM usuarios u
                     INNER JOIN alumnos_clases ac ON u.id = ac.alumno_id
                     WHERE ac.clase_id='$clase_id'";
@@ -142,9 +153,12 @@ if($tab == "personas"){
         echo "<div class='lista-personas'>";
         
         while($alumno = $res_alumnos->fetch_assoc()){
-            echo "<div class='persona'>" . htmlspecialchars($alumno['nombre']) . 
-            " (" . htmlspecialchars($alumno['correo']) . ")" .
-            "</div>";
+            echo "<div class='persona' style='display:flex; align-items:center; justify-content:space-between;'>";
+            echo "<div>" . htmlspecialchars($alumno['nombre']) . " (" . htmlspecialchars($alumno['correo']) . ")</div>";
+            if($_SESSION['rol'] === 'profesor'){
+                echo "<div><button style='background:#e74c3c;color:#fff;border:none;padding:6px 8px;border-radius:4px;cursor:pointer;' onclick=\"eliminarAlumno('" . $clase_id . "','" . $alumno['alumno_id'] . "')\">Eliminar</button></div>";
+            }
+            echo "</div>";
         }
 
         echo "</div>";
@@ -156,40 +170,140 @@ if($tab == "personas"){
 // =========================
 //      PESTAÑA ENTREGAS
 // =========================
+// PESTAÑA ENTREGUES
+// Aquí s'agrupen les entregues per activitat.
+// - Els alumnes veuen només les seves entregues.
+// - Els professors veuen totes les entregues de la classe i poden posar notes.
 if($tab == "entregas"){
     echo "<h2>Entregas</h2>";
     
     if($_SESSION['rol'] == "profesor"){
-        // aqui mostramos las entregas
-        $sql_entregas = "SELECT e.*, d.titulo as deber_titulo, u.nombre as alumno_nombre 
+        // Mostrar todas las entregas de la clase para el profesor
+        $sql_entregas = "SELECT e.*, d.id AS deber_id, d.titulo as deber_titulo, u.nombre as alumno_nombre 
                          FROM entregas e 
                          JOIN deberes d ON e.id_deberes = d.id 
                          JOIN usuarios u ON e.id_alumno = u.id 
                          WHERE d.clase_id='$clase_id' 
-                         ORDER BY e.fecha_entrega DESC";
-        $res_entregas = $conn->query($sql_entregas);
+                         ORDER BY d.id, e.fecha_entrega DESC";
+    } else {
+        // Mostrar solo las entregas del alumno para el alumno
+        $alumno_id = intval($_SESSION['id']);
+        $sql_entregas = "SELECT e.*, d.id AS deber_id, d.titulo as deber_titulo, u.nombre as alumno_nombre 
+                         FROM entregas e 
+                         JOIN deberes d ON e.id_deberes = d.id 
+                         JOIN usuarios u ON e.id_alumno = u.id 
+                         WHERE d.clase_id='$clase_id' AND e.id_alumno='$alumno_id' 
+                         ORDER BY d.id, e.fecha_entrega DESC";
+    }
+    $res_entregas = $conn->query($sql_entregas);
+    
+    if($res_entregas && $res_entregas->num_rows > 0){
+        $entregas_por_deber = [];
+        while($entrega = $res_entregas->fetch_assoc()){
+            $deber_id = $entrega['deber_id'];
+            if(!isset($entregas_por_deber[$deber_id])){
+                $entregas_por_deber[$deber_id] = [
+                    'titulo' => $entrega['deber_titulo'],
+                    'entregas' => []
+                ];
+            }
+            $entregas_por_deber[$deber_id]['entregas'][] = $entrega;
+        }
         
-        if($res_entregas && $res_entregas->num_rows > 0){
-            while($entrega = $res_entregas->fetch_assoc()){
-                echo "<div class='deber'>";
-                echo "<h3>Deber: " . $entrega['deber_titulo'] . "</h3>";
-                echo "<p>Alumno: " . $entrega['alumno_nombre'] . "</p>";
-                echo "<p>Fecha: " . $entrega['fecha_entrega'] . "</p>";
-                echo "<a class='boton-entregar' href='php/descargar.php?id=" . $entrega['id'] . "'>Descargar archivo</a>";
+        foreach($entregas_por_deber as $deber){
+            echo "<div class='actividad-card' style='margin-bottom:20px;'>";
+            echo "<h3>Actividad: " . htmlspecialchars($deber['titulo']) . "</h3>";
+            foreach($deber['entregas'] as $entrega){
+                echo "<div class='entrega-item' style='position:relative; padding:14px 140px 14px 14px; border:1px solid #ccc; border-radius:8px; margin-top:10px; background:#fafafa;'>";
+                echo "<p><strong>Alumno:</strong> " . htmlspecialchars($entrega['alumno_nombre']) . "</p>";
+                echo "<p><strong>Fecha:</strong> " . htmlspecialchars($entrega['fecha_entrega']) . "</p>";
+                $nota_text = $entrega['nota'] !== null && $entrega['nota'] !== '' ? htmlspecialchars($entrega['nota']) : 'Sin nota';
+                echo "<p><strong>Nota:</strong> " . $nota_text . "</p>";
+                echo "<a class='boton-entregar' href='" . $basePath . "/php/descargar.php?id=" . $entrega['id'] . "'>Descargar archivo</a>";
+                if($_SESSION['rol'] === 'profesor'){
+                    $nota_val = isset($entrega['nota']) ? $entrega['nota'] : '';
+                    echo "<div style='position:absolute; right:10px; top:10px;'>";
+                    echo "<button class='btn-poner-nota' onclick=\"openNota('" . $entrega['id'] . "', '" . htmlspecialchars($nota_val) . "')\">Poner nota</button>";
+                    echo "</div>";
+                }
                 echo "</div>";
             }
-        } else {
-            echo "<p>No hay entregas todavia.</p>";
+            echo "</div>";
         }
     } else {
-        echo "<p>No puedes ver esto.</p>";
+        echo "<p>No hay entregas todavia.</p>";
     }
 }
+
 ?>
 
 <a class="volver" href="mainPage.php">Volver al menú</a>
 
 </div>
+
+<!-- Modal para poner nota -->
+<div id="notaModal" style="display:none; position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
+    <div style="background:#fff; padding:20px; max-width:360px; margin:80px auto; border-radius:6px; position:relative;">
+        <h3>Poner nota</h3>
+        <!-- Aquest quadre permet al professor introduir la nota d'una entrega.
+             És un formulari senzill amb un camp per la nota i dos botons (Guardar/Cancelar). -->
+        <form id="formNota">
+            <input type="hidden" name="entrega_id" id="entrega_id">
+            <label>Nota (0-10):</label>
+            <input type="number" step="0.01" min="0" max="10" name="nota" id="nota_input" required>
+            <div style="margin-top:10px; display:flex; gap:8px; justify-content:flex-end;">
+                <button type="button" onclick="closeNota()">Cancelar</button>
+                <button type="submit">Guardar</button>
+            </div>
+        </form>
+        <button onclick="closeNota()" style="position:absolute; right:8px; top:8px;">×</button>
+    </div>
+</div>
+
+<script>
+// Funcions petites per obrir/ tancar el quadre de posar nota i enviar la nota al servidor.
+// Explicació senzilla: quan el professor fa clic a "Poner nota" s'obre un quadre, escriu la nota i es guarda.
+function openNota(entregaId, nota){
+    document.getElementById('entrega_id').value = entregaId;
+    document.getElementById('nota_input').value = nota || '';
+    document.getElementById('notaModal').style.display = 'block';
+}
+function closeNota(){
+    document.getElementById('notaModal').style.display = 'none';
+}
+document.getElementById('formNota').addEventListener('submit', function(e){
+    e.preventDefault();
+    var form = e.target;
+    var data = new FormData(form);
+    fetch('php/guardar_nota.php', {method:'POST', body:data})
+    .then(r => r.json())
+    .then(j => {
+        if(j.success){
+            alert('Nota guardada');
+            location.reload();
+        } else {
+            alert('Error: ' + (j.error || 'no esperado'));
+        }
+    }).catch(err=>{ alert('Error de red'); });
+});
+
+function eliminarAlumno(claseId, alumnoId){
+    if(!confirm('¿Eliminar a este alumno de la clase?')) return;
+    var body = 'clase_id=' + encodeURIComponent(claseId) + '&alumno_id=' + encodeURIComponent(alumnoId);
+    fetch('php/eliminar_alumno.php', {
+        method: 'POST',
+        headers: {'Content-Type':'application/x-www-form-urlencoded'},
+        body: body
+    }).then(r=>r.json()).then(j=>{
+        if(j.success){
+            alert('Alumno eliminado de la clase');
+            location.reload();
+        } else {
+            alert('Error: ' + (j.error || 'no esperado'));
+        }
+    }).catch(()=>{ alert('Error de red'); });
+}
+</script>
 
 </body>
 </html>

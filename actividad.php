@@ -8,6 +8,10 @@ if(!isset($_SESSION['id'])){
 }
 
 $deber_id = $_GET['id'] ?? '';
+// Aquesta pàgina mostra una activitat concreta.
+// Explicació per a qui no sap programar:
+// - Rebem un número que identifica la tasca (de l'enllaç).
+// - Si aquest número no existeix, mostrem un missatge.
 if(empty($deber_id)){
     echo "Actividad no encontrada.";
     exit();
@@ -43,6 +47,7 @@ $entregas_count = 0;
 if($res_count && $res_count->num_rows > 0){
     $entregas_count = $res_count->fetch_assoc()['total'];
 }
+$basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 ?>
 
 <!DOCTYPE html>
@@ -51,12 +56,12 @@ if($res_count && $res_count->num_rows > 0){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($deber['titulo']); ?> - Actividad</title>
-    <link rel="stylesheet" href="clases.css">
+    <link rel="stylesheet" href="<?php echo $basePath; ?>/clases.css">
 </head>
 <body>
 
 <div class="container">
-    <a class="volver" href="clases.php?id=<?php echo $clase_id; ?>&tab=actividades">← Volver a Actividades</a>
+    <a class="volver" href="<?php echo $basePath; ?>/clases.php?id=<?php echo $clase_id; ?>&tab=actividades">← Volver a Actividades</a>
 
     <div class="actividad-detalle">
         <div class="actividad-header">
@@ -82,15 +87,18 @@ if($res_count && $res_count->num_rows > 0){
                     <h3>Estado de entrega</h3>
                     <?php if($_SESSION['rol'] === 'profesor'): ?>
                         <p>Total de entregas: <?php echo $entregas_count; ?></p>
-                        <a class="boton-verde" href="clases.php?id=<?php echo $clase_id; ?>&tab=entregas">Ver entregas</a>
+                        <a class="boton-verde" href="<?php echo $basePath; ?>/clases.php?id=<?php echo $clase_id; ?>&tab=entregas">Ver entregas</a>
+                        <div style="margin-top:12px;">
+                            <button id="btnEliminarClase" style="background:#c0392b; color:#fff; border:none; padding:8px 10px; border-radius:4px; cursor:pointer;">Eliminar clase</button>
+                        </div>
                     <?php else: ?>
                         <?php if($entrega_usuario): ?>
                             <p>Última entrega: <?php echo htmlspecialchars($entrega_usuario['fecha_entrega']); ?></p>
                             <p>Archivo: <?php echo htmlspecialchars($entrega_usuario['archivo_nombre']); ?></p>
-                            <a class="boton-verde" href="entregar.php?id=<?php echo $deber_id; ?>&clase_id=<?php echo $clase_id; ?>">Reemplazar entrega</a>
+                            <a class="boton-verde" href="<?php echo $basePath; ?>/entregar.php?id=<?php echo $deber_id; ?>&clase_id=<?php echo $clase_id; ?>">Reemplazar entrega</a>
                         <?php else: ?>
                             <p>No has entregado todavía.</p>
-                            <a class="boton-verde" href="entregar.php?id=<?php echo $deber_id; ?>&clase_id=<?php echo $clase_id; ?>">Entregar tarea</a>
+                            <a class="boton-verde" href="<?php echo $basePath; ?>/entregar.php?id=<?php echo $deber_id; ?>&clase_id=<?php echo $clase_id; ?>">Entregar tarea</a>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
@@ -100,4 +108,22 @@ if($res_count && $res_count->num_rows > 0){
 </div>
 
 </body>
+<script>
+document.getElementById('btnEliminarClase')?.addEventListener('click', function(){
+    if(!confirm('¿Eliminar la clase y todas sus actividades y entregas? Esta acción no se puede deshacer.')) return;
+    var claseId = <?php echo json_encode($clase_id); ?>;
+    fetch('php/eliminar_clase.php', {
+        method: 'POST',
+        headers: {'Content-Type':'application/x-www-form-urlencoded'},
+        body: 'clase_id=' + encodeURIComponent(claseId)
+    }).then(r=>r.json()).then(j=>{
+        if(j.success){
+            alert('Clase eliminada correctamente.');
+            window.location.href = 'mainPage.php';
+        } else {
+            alert('Error: ' + (j.error || 'no esperado'));
+        }
+    }).catch(()=>{ alert('Error de red'); });
+});
+</script>
 </html>

@@ -21,8 +21,6 @@ $clase_id = $_GET['clase_id'];
 </head>
 <body>
 
-    <!-- incluimos el menú de arriba -->
-    <?php include 'desplegable.php'; ?>
 
     <!-- contenedor principal con el formulario -->
     <div class="container-entregar">

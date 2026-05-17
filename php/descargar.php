@@ -39,9 +39,16 @@ if(!file_exists($ruta)){
     exit();
 }
 
+// evitar que cualquier salida previa corrompa el binario
+if (ob_get_level()) {
+    ob_end_clean();
+}
+
 // headers para que el navegador lo descargue
+header("Content-Description: File Transfer");
 header("Content-Type: $tipo");
 header("Content-Disposition: attachment; filename=\"$nombre\"");
+header("Content-Transfer-Encoding: binary");
 header("Content-Length: " . filesize($ruta));
 
 // enviamos el archivo tal cual
