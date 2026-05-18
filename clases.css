@@ -1,7 +1,7 @@
 /* Estilos para el cuerpo de la página */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, rgb(102, 126, 234), rgb(118, 75, 162));
     min-height: 100vh;
 }
 
@@ -60,7 +60,7 @@ body {
 }
 
 .actividad-card {
-    background: rgba(255, 255, 255, 0.5);
+    background: linear-gradient(45deg, rgb(102, 126, 234, 0.7), rgb(118, 75, 162, 0.7));
     border: 1px solid rgba(102, 126, 234, 0.1);
     border-radius: 14px;
     padding: 18px 20px;
@@ -122,7 +122,6 @@ body {
 .botonVerAct:hover {
     background-color: rgb(118, 118, 255, 0.5);
     backdrop-filter: blur(10px);
-    color: white;
 
     transition: 0.6s;
 }

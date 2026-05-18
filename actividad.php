@@ -57,6 +57,7 @@ $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($deber['titulo']); ?> - Actividad</title>
     <link rel="stylesheet" href="<?php echo $basePath; ?>/clases.css">
+    <link rel="stylesheet" href="actividad.css">
 </head>
 <body>
 
