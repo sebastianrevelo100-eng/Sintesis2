@@ -64,7 +64,7 @@ $rol = $_SESSION['rol'];
         <input type="submit" value="Unir-se a la classe">
     </form>
     <?php endif; ?>
-</div>
+</div class="chatBot">
 
 <script>
   window.addEventListener('mouseover', initLandbot, { once: true });
