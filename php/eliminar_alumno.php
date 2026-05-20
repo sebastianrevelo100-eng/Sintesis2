@@ -2,10 +2,6 @@
 session_start();
 header('Content-Type: application/json; charset=utf-8');
 
-// Aquest fitxer treu un alumne d'una classe (només la seva inscripció).
-// Explicació senzilla:
-// - No esborrem l'usuari del sistema, només fem que deixi de pertànyer a aquesta classe.
-// - Només el professor responsable pot fer aquesta acció.
 
 if(!isset($_SESSION['id']) || ($_SESSION['rol'] ?? '') !== 'profesor'){
     echo json_encode(['success' => false, 'error' => 'No autorizado']);
@@ -17,7 +13,7 @@ include 'conexion.php';
 $clase_id = $_POST['clase_id'] ?? null;
 $alumno_id = $_POST['alumno_id'] ?? null;
 if(!$clase_id || !$alumno_id){
-    // Ens calen l'id de la classe i l'id de l'alumne per poder eliminar la relació
+    # Ens fa falta el id del alumne i el id de la classe per a poder eliminar la relació
     echo json_encode(['success' => false, 'error' => 'Faltan parametros']);
     exit();
 }
@@ -25,7 +21,7 @@ if(!$clase_id || !$alumno_id){
 $clase_id = intval($clase_id);
 $alumno_id = intval($alumno_id);
 
-// Comprobar que el profesor es el propietario de la clase
+# Comprobar que el professor es el propietari de la classe
 $stmt = $conn->prepare("SELECT profesor_id FROM clases WHERE id = ?");
 $stmt->bind_param('i', $clase_id);
 $stmt->execute();
@@ -37,7 +33,7 @@ if(intval($row['profesor_id']) !== intval($_SESSION['id'])){
     exit();
 }
 
-// Borrar relación alumno-clase
+# Borrar la relació entre el alumne i la classe
 $stmt = $conn->prepare("DELETE FROM alumnos_clases WHERE clase_id = ? AND alumno_id = ?");
 if(!$stmt){ echo json_encode(['success'=>false,'error'=>'Error DB']); exit(); }
 $stmt->bind_param('ii', $clase_id, $alumno_id);

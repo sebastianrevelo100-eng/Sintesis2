@@ -246,13 +246,12 @@ body {
     background-color: #7676ff;
 }
 
-/* Segundo body para otra página */
 body {
     margin: 0;
     font-family: Arial;
 }
 
-/* Barra lateral */
+
 .desplegable {
     width: 200px;
     background: white;
@@ -262,20 +261,20 @@ body {
     float: left;
 }
 
-/* Título del desplegable */
+
 .desplegable-title {
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
 }
 
-/* Lista de clases */
+
 .lista-clases {
     display: none;
     margin-top: 10px;
 }
 
-/* Cada clase */
+
 .clase-item {
     display: block;
     padding: 8px;
@@ -290,7 +289,6 @@ body {
     background: gray;
 }
 
-/* Contenido principal */
 .contenido {
     margin-left: 240px;
     padding: 20px;
@@ -312,4 +310,75 @@ body {
 .profe {
     background: #d1e7ff;
     font-weight: bold;
+}
+
+form textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #667eea;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    resize: none;
+    transition: 0.3s;
+}
+
+form textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+form textarea:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+form button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+
+
+.actividad-card {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.actividad-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.12);
+}
+
+
+.actividad-card h3 {
+    color: white;
+    margin-bottom: 8px;
+}
+
+
+.actividad-card p {
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 10px;
+}
+
+
+.actividad-card span {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
 }

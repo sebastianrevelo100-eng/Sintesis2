@@ -231,3 +231,8 @@ details .content{
 details[open]{
     background-color: transparent;
 }
+
+.landbot-container {
+    background: transparent;
+    border: none;
+}

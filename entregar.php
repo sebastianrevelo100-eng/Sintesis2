@@ -18,6 +18,7 @@ $clase_id = $_GET['clase_id'];
     <title>Entregar deber - EduMain</title>
     <!-- importamos el CSS -->
     <link rel="stylesheet" href="entregar.css">
+    <link rel="icon" href="uploads/logo.png" type="image/png">
 </head>
 <body>
 

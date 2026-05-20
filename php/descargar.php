@@ -2,16 +2,16 @@
 session_start();
 include 'conexion.php';
 
-// pillamos el id que viene por la url
+
 $id_entrega = $_GET['id'];
 
-// buscamos la entrega en la bd
+# Busquem la entrega a la base de dades
 $sql = "SELECT archivo_nombre, archivo_tipo, id_alumno 
         FROM entregas 
         WHERE id='$id_entrega'";
 $res = $conn->query($sql);
 
-// si no existe pues nada
+# Si no existeix o hi ha un error, mostrem el missatge d'error
 if(!$res || $res->num_rows == 0){
     echo "No encontrado";
     exit();
@@ -19,38 +19,38 @@ if(!$res || $res->num_rows == 0){
 
 $datos = $res->fetch_assoc();
 
-// nombre del archivo y tipo
+# Definim les 3 variables que es necessiten per la descarrega
 $nombre = $datos['archivo_nombre'];
 $tipo = $datos['archivo_tipo'];
 $id_alumno = $datos['id_alumno'];
 
-// comprobamos que el que descarga sea profe o el alumno dueño
+
 if($_SESSION['rol'] != "profesor" && $_SESSION['id'] != $id_alumno){
     echo "No tienes permiso";
     exit();
 }
 
-// ruta donde guardo los archivos (a lo cutre pero funciona)
+# Ruta on es guarda l'arxiu
 $ruta = "C:/xampp/htdocs/Sintesis2/uploads/" . $nombre;
 
-// si no está el archivo pues error
+# Si no esta l'arxiu mostra l'error
 if(!file_exists($ruta)){
     echo "Archivo no encontrado en: " . $ruta;
     exit();
 }
 
-// evitar que cualquier salida previa corrompa el binario
+
 if (ob_get_level()) {
     ob_end_clean();
 }
 
-// headers para que el navegador lo descargue
+
 header("Content-Description: File Transfer");
 header("Content-Type: $tipo");
 header("Content-Disposition: attachment; filename=\"$nombre\"");
 header("Content-Transfer-Encoding: binary");
 header("Content-Length: " . filesize($ruta));
 
-// enviamos el archivo tal cual
+
 readfile($ruta);
 exit();

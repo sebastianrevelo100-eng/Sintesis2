@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registro - EduMain</title>
+<title>Registre - EduMain</title>
 <link rel="stylesheet" href="register.css">
+<link rel="icon" href="uploads/logo.png" type="image/png">
 </head>
 <body>
 
 <div class="container">
 <img class="imagen" src="https://i.im.ge/QM1SDNr/logo.png">
-<h1 class="textoRegistro">Registro de usuario</h1>
+<h1 class="textoRegistro">Registre d'usuari</h1>
+
 <form action="php/register.php" method="POST">
-<input class="inputNombre" name="nombre" type="text" placeholder="Nombre" required><br><br>
-            <input class="inputCorreo" name="correo" type="email" placeholder="Correo" required><br><br>
-            <input class="inputContraseña" name="contraseña" type="password" placeholder="Contraseña" required><br><br>
-            <select class="seleccionRol" name="rol">
+<input class="inputNombre" name="nombre" type="text" placeholder="Nom" required><br><br>
+<input class="inputCorreo" name="correo" type="email" placeholder="Correu" required><br><br>
+<input class="inputContraseña" name="contraseña" type="password" placeholder="Contrasenya" required><br><br>
 
-                <option value="">Selecciona un rol</option>
+<select class="seleccionRol" name="rol">
+<option value="">Selecciona un rol</option>
+<option value="alumno">Alumne</option>
+<option value="profesor">Professor</option>
+</select><br><br>
 
-                <option value="alumno">Alumno</option>
-                <option value="profesor">Profesor</option>
-            </select><br><br>
-            <input class="botonSubmit" type="submit" value="Registrarse">
-        </form>
-    </div>
+<input class="botonSubmit" type="submit" value="Registrar-se">
+</form>
+</div>
 
-
-    
 </body>
 </html>

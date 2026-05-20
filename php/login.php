@@ -2,11 +2,11 @@
 session_start();
 include 'conexion.php';
 
-// comprovar que llegan los datos
+
 if (!empty($_POST['correo']) && !empty($_POST['contraseña'])) {
 
-    $correo = $_POST['correo'];
-    $contraseña = $_POST['contraseña'];
+    $correo = $_POST['correo']; #Crea la variable de correu i li asigna el valor del camp al formulari de inici de sessió
+    $contraseña = $_POST['contraseña']; #Crea la variable de contrasenya i també li asigna el valor del camp
 
     $sql = "SELECT * FROM usuarios WHERE correo = '$correo'";
     $resultado = $conn->query($sql);
@@ -15,7 +15,7 @@ if (!empty($_POST['correo']) && !empty($_POST['contraseña'])) {
 
         $usuario = $resultado->fetch_assoc();
 
-        // comparacion directa
+        # comprovació de les credencials
         if ($contraseña == $usuario['contraseña']) {
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nombre'] = $usuario['nombre'];

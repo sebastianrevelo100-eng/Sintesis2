@@ -58,6 +58,7 @@ $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
     <title><?php echo htmlspecialchars($deber['titulo']); ?> - Actividad</title>
     <link rel="stylesheet" href="<?php echo $basePath; ?>/clases.css">
     <link rel="stylesheet" href="actividad.css">
+    <link rel="icon" href="uploads/logo.png" type="image/png">
 </head>
 <body>
 

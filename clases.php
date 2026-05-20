@@ -42,6 +42,7 @@ $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
         <meta charset="UTF-8">
         <title><?php echo $clase['nombre']; ?></title>
         <link rel="stylesheet" href="<?php echo $basePath; ?>/clases.css">
+        <link rel="icon" href="uploads/logo.png" type="image/png">
         </head>
 <body>
 
@@ -56,7 +57,12 @@ $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
     <a href="<?php echo $basePath; ?>/clases.php?id=<?php echo $clase_id; ?>&tab=actividades">Actividades</a>
     <a href="<?php echo $basePath; ?>/clases.php?id=<?php echo $clase_id; ?>&tab=entregas">Entregas</a>
     <a href="<?php echo $basePath; ?>/clases.php?id=<?php echo $clase_id; ?>&tab=personas">Personas</a>
+
+    <button id="btnEliminarClase" style="background:#c0392b; color:#fff; border:none; padding: 8px 10px; border-radius:4px; cursor:pointer; position: absolute; top: 40px; right: 180px;">Eliminar clase</button>
+    
+
 </div>
+
 
 <hr>
 
@@ -66,7 +72,36 @@ $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 // =========================
 if($tab == "anuncios"){
     echo "<h2>Anuncios</h2>";
-    echo "<p>Aquí puedes poner anuncios de la clase.</p>";
+
+    // SOLO PROFESOR puede crear anuncios
+    if($_SESSION['rol'] == "profesor"){
+        echo '
+        <h3>Crear anuncio</h3>
+        <form action="php/crearAnuncio.php" method="POST">
+            <input type="hidden" name="clase_id" value="'.$clase_id.'">
+            <input type="text" name="titulo" placeholder="Título del anuncio" required>
+            <textarea name="descripcion" placeholder="Descripción del anuncio" required></textarea>
+            <button type="submit">Publicar anuncio</button>
+        </form>
+        <hr>
+        ';
+    }
+
+    // MOSTRAR ANUNCIOS
+    $sql_anuncios = "SELECT * FROM anuncios WHERE clase_id='$clase_id' ORDER BY fecha DESC";
+    $res_anuncios = $conn->query($sql_anuncios);
+
+    if($res_anuncios && $res_anuncios->num_rows > 0){
+        while($anuncio = $res_anuncios->fetch_assoc()){
+            echo "<div class='actividad-card'>";
+            echo "<h3>".htmlspecialchars($anuncio['titulo'])."</h3>";
+            echo "<p>".htmlspecialchars($anuncio['descripcion'])."</p>";
+            echo "<span style='font-size:12px; color:gray;'>".$anuncio['fecha']."</span>";
+            echo "</div>";
+        }
+    } else {
+        echo "<p>No hay anuncios todavía.</p>";
+    }
 }
 
 // =========================
@@ -303,6 +338,24 @@ function eliminarAlumno(claseId, alumnoId){
         }
     }).catch(()=>{ alert('Error de red'); });
 }
+
+document.getElementById('btnEliminarClase')?.addEventListener('click', function(){
+    if(!confirm('¿Eliminar la clase y todas sus actividades y entregas? Esta acción no se puede deshacer.')) return;
+    var claseId = <?php echo json_encode($clase_id); ?>;
+    fetch('php/eliminar_clase.php', {
+        method: 'POST',
+        headers: {'Content-Type':'application/x-www-form-urlencoded'},
+        body: 'clase_id=' + encodeURIComponent(claseId)
+    }).then(r=>r.json()).then(j=>{
+        if(j.success){
+            alert('Clase eliminada correctamente.');
+            window.location.href = 'mainPage.php';
+        } else {
+            alert('Error: ' + (j.error || 'no esperado'));
+        }
+    }).catch(()=>{ alert('Error de red'); });
+});
+
 </script>
 
 </body>

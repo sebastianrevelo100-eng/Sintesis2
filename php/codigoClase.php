@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../codigoClase.css">
+        <link rel="icon" href="uploads/logo.png" type="image/png">
     </head>
 </html>
 
@@ -8,18 +9,18 @@
 session_start();
 include 'conexion.php';
 
-// si no eres profe no puedes crear una clase
+# Si no ets professor no pots crear una classe
 if(!isset($_SESSION['id']) || $_SESSION['rol'] != 'profesor'){
     die("<p class='error'>No tienes permiso para crear clases</p>");
 }
 
-// si llegaron los datos del formulario
+# Comprova si les dades del formulari han arribat
 if(isset($_POST['nombre'])){
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
     $profesor_id = $_SESSION['id'];
 
-    // codigo de 6 letras y numeros
+    # Genera un codi aleatori de 6 caràcters
     $codigo = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 0, 6);
 
     $sql = "INSERT INTO clases (nombre, descripcion, profesor_id, codigo)

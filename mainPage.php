@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 
 // verificamos si el usuario no ha iniciado sesion, si no lo envia al login.html
 if(!isset($_SESSION['id'])){
@@ -16,34 +16,28 @@ $rol = $_SESSION['rol'];
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>EduMain - Página principal</title>
+    <title>EduMain - Pàgina principal</title>
     <link rel="stylesheet" href="mainPage.css">
-    <link rel="icon" href="upload/logo.png" type="image/png">
+    <link rel="icon" href="uploads/logo.png" type="image/png">
     <script>
 
-        
         function togglePerfilMenu() {
             document.getElementById("perfilMenu").classList.toggle("show");
         }
-
 
     </script>
 
     <div class="perfil-container">
 
     <div id="perfilMenu" class="perfil-menu">
-        <a href="perfil.php">Ver perfil</a>
-        <a href="editarPerfil.php">Editar nombre y foto</a>
-        <a href="cambiarContrasena.php">Cambiar contraseña</a>
-        <a href="logout.php">Cerrar sesión</a>
+        <a href="perfil.php">Veure perfil</a>
+        <a href="editarPerfil.php">Editar nom i foto</a>
+        <a href="cambiarContrasena.php">Canviar contrasenya</a>
+        <a href="logout.php">Tancar sessió</a>
     </div>
 </div>
 
-
-
 </head>
-
-
 
 <body>
 
@@ -52,7 +46,7 @@ $rol = $_SESSION['rol'];
     <h2>Benvingut, <?php echo $nombre; ?> (<?php echo $rol; ?>)</h2>
     <ul>
         <?php if($rol == "profesor"): ?>
-        <li><a href="clase/crearclase.html">Crear clase</a></li>
+        <li><a href="clase/crearclase.html">Crear classe</a></li>
         <?php endif; ?>
         <li><a href="php/logout.php">Tancar sessió</a></li>
     </ul>
@@ -60,7 +54,7 @@ $rol = $_SESSION['rol'];
     <!-- formulario para que el alumno se una a una clase con el codigo-->
     <?php if($rol == "alumno"): ?>
     <form action="php/unirse.php" method="POST">
-        <input type="text" name="codigo" placeholder="Códi de la classe" required>
+        <input type="text" name="codigo" placeholder="Codi de la classe" required>
         <input type="submit" value="Unir-se a la classe">
     </form>
     <?php endif; ?>
@@ -78,6 +72,7 @@ $rol = $_SESSION['rol'];
       s.addEventListener('load', function() {
         var myLandbot = new Landbot.Livechat({
           configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3435081-D68MAJ7HAJZ2AW94/index.json',
+          container: 'landbot-container'
         });
       });
       s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
@@ -105,7 +100,7 @@ if (!isset($_COOKIE['cookies_aceptadas'])) {
 }
 
 // Muestra las clases depende si eres profe o alumno
-if($rol == 'alumno'){ 
+if($rol == 'alumno'){
     $alumno_id = $_SESSION['id'];
     $sql = "SELECT c.* FROM clases c
             INNER JOIN alumnos_clases ac ON c.id = ac.clase_id
@@ -134,63 +129,55 @@ if($rol == 'profesor'){
     echo "</div>";
 }
 
-
-
-
 $conn->close();
 ?>
 
 <?php if ($mostrarFooterCookies): ?>
 <footer class="footerCookies">
-    Este sitio utiliza cookies para mejorar la experiencia.
+    Aquest lloc utilitza cookies per millorar l'experiència.
     <form action="cookiesHandler.php" method="POST" style="display:inline;">
-        <button  class="botonAceptar" type="submit" name="opcion" value="Aceptar">Aceptar</button>
+        <button  class="botonAceptar" type="submit" name="opcion" value="Aceptar">Acceptar</button>
     </form>
 
     <form action="cookiesHandler.php" method="POST" style="display:inline;">
-        <button class="botonAceptarEsenc" type="submit" name="opcion" value="Aceptar esenciales">Aceptar solo esenciales</button>
+        <button class="botonAceptarEsenc" type="submit" name="opcion" value="Aceptar esenciales">Acceptar només essencials</button>
     </form>
 
     <form action="cookiesHandler.php" method="POST" style="display:inline;">
-        <button class="botonRechazar" type="submit" name="opcion" value="Rechazar">Rechazar</button>
+        <button class="botonRechazar" type="submit" name="opcion" value="Rechazar">Rebutjar</button>
     </form>
 
-    
+   
     <details style="margin-top: 10px; padding: 10px; background: transparent; border-radius: 5px; width: 99%">
-    <summary class="botonMasDeta">Más detalles</summary>
+    <summary class="botonMasDeta">Més detalls</summary>
     <div class="content">
         <h4>Necessàries</h4>
         <p>
-            Les galetes necessàries ajuden a fer que un lloc web sigui utilitzable permetent funcions bàsiques 
-            com la navegació per la pàgina i l'accés a àrees segures del lloc web. 
-            El lloc web no pot funcionar correctament sense aquestes galetes.
+            Les cookies necessàries ajuden a fer que un lloc web sigui utilitzable permetent funcions bàsiques
+            com la navegació per la pàgina i l'accés a àrees segures del lloc web.
+            El lloc web no pot funcionar correctament sense aquestes cookies.
         </p>
 
         <h4>Estadístiques</h4>
         <p>
-            Les galetes estadístiques ajuden els propietaris de llocs web a entendre com interactuen els visitants 
+            Les cookies estadístiques ajuden els propietaris de llocs web a entendre com interactuen els visitants
             amb els llocs web mitjançant la recopilació i la presentació d'informació de manera anònima.
         </p>
 
         <h4>Preferències</h4>
         <p>
-            Les galetes de preferències permeten que un lloc web recordi informació que canvia el comportament 
+            Les cookies de preferències permeten que un lloc web recordi informació que canvia el comportament
             o l'aspecte del lloc web, com ara el vostre idioma preferit o la regió on us trobeu.
         </p>
 
         <h4>Màrqueting</h4>
         <p>
-            Les galetes de màrqueting s'utilitzen per fer un seguiment dels visitants a través de llocs web. 
-            La intenció és mostrar anuncis que siguin rellevants i atractius per a l'usuari individual i, 
+            Les cookies de màrqueting s'utilitzen per fer un seguiment dels visitants a través de llocs web.
+            La intenció és mostrar anuncis que siguin rellevants i atractius per a l'usuari individual i,
             per tant, més valuosos per als editors i anunciants externs.
         </p>
     </div>
 </details>
-
-
-
-
-
 
 </footer>
 <?php endif; ?>
