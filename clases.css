@@ -311,74 +311,88 @@ body {
     background: #d1e7ff;
     font-weight: bold;
 }
+/* CONTENEDOR FORM */
+.anuncio-form-container {
+    margin-bottom: 20px;
+}
 
-form textarea {
+/* INPUT */
+.input-anuncio {
     width: 100%;
-    min-height: 80px;
     padding: 10px;
-    margin-top: 10px;
     border-radius: 10px;
     border: 1px solid #667eea;
     background: rgba(255,255,255,0.1);
     color: white;
-    resize: none;
-    transition: 0.3s;
-}
-
-form textarea::placeholder {
-    color: rgba(255,255,255,0.7);
-}
-
-form textarea:hover {
-    background: rgba(255,255,255,0.2);
-}
-
-form button {
-    margin-top: 10px;
-    padding: 10px;
-    width: 100%;
-    border-radius: 10px;
-    border: none;
-    background: linear-gradient(90deg, #667eea, #764ba2);
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-form button:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 15px rgba(255,255,255,0.2);
-}
-
-
-.actividad-card {
-    background: rgba(255,255,255,0.08);
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    transition: 0.3s;
-}
-
-.actividad-card:hover {
-    transform: translateY(-3px);
-    background: rgba(255,255,255,0.12);
-}
-
-
-.actividad-card h3 {
-    color: white;
-    margin-bottom: 8px;
-}
-
-
-.actividad-card p {
-    color: rgba(255,255,255,0.85);
     margin-bottom: 10px;
 }
 
+/* TEXTAREA */
+.textarea-anuncio {
+    width: 100%;
+    min-height: 80px;
+}
 
-.actividad-card span {
+/* BOTÓN */
+.btn-anuncio {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #7676ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: 0.6s;
+}
+
+.btn-anuncio:hover {
+    background-color: #7676ff;
+
+    transition: 0.6s;
+}
+
+/* LISTA */
+.lista-anuncios {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* CARD */
+.anuncio-card {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* HEADER */
+.anuncio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* TITULO */
+.anuncio-titulo {
+    color: white;
+}
+
+/* FECHA */
+.anuncio-fecha {
     font-size: 12px;
     color: rgba(255,255,255,0.6);
+}
+
+/* DESCRIPCIÓN */
+.anuncio-descripcion {
+    margin-top: 10px;
+    color: rgba(255,255,255,0.85);
+}
+
+/* TEXTO VACÍO */
+.sin-anuncios {
+    color: rgba(255,255,255,0.7);
 }

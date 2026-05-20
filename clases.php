@@ -71,18 +71,23 @@ $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 //      PESTAÑA ANUNCIOS
 // =========================
 if($tab == "anuncios"){
-    echo "<h2>Anuncios</h2>";
+    echo "<h2 class='titulo-seccion'>Anuncios</h2>";
 
-    // SOLO PROFESOR puede crear anuncios
+    // FORMULARIO PROFESOR
     if($_SESSION['rol'] == "profesor"){
         echo '
-        <h3>Crear anuncio</h3>
-        <form action="php/crearAnuncio.php" method="POST">
-            <input type="hidden" name="clase_id" value="'.$clase_id.'">
-            <input type="text" name="titulo" placeholder="Título del anuncio" required>
-            <textarea name="descripcion" placeholder="Descripción del anuncio" required></textarea>
-            <button type="submit">Publicar anuncio</button>
-        </form>
+        <div class="anuncio-form-container">
+            <h3 class="subtitulo">Crear anuncio</h3>
+            <form class="anuncio-form" action="php/crear_anuncio.php" method="POST">
+                <input type="hidden" name="clase_id" value="'.$clase_id.'">
+                
+                <input class="input-anuncio" type="text" name="titulo" placeholder="Título del anuncio" required>
+                
+                <textarea class="textarea-anuncio" name="descripcion" placeholder="Descripción del anuncio" required></textarea>
+                
+                <button class="btn-anuncio" type="submit">Publicar anuncio</button>
+            </form>
+        </div>
         <hr>
         ';
     }
@@ -91,17 +96,26 @@ if($tab == "anuncios"){
     $sql_anuncios = "SELECT * FROM anuncios WHERE clase_id='$clase_id' ORDER BY fecha DESC";
     $res_anuncios = $conn->query($sql_anuncios);
 
+    echo "<div class='lista-anuncios'>";
+
     if($res_anuncios && $res_anuncios->num_rows > 0){
         while($anuncio = $res_anuncios->fetch_assoc()){
-            echo "<div class='actividad-card'>";
-            echo "<h3>".htmlspecialchars($anuncio['titulo'])."</h3>";
-            echo "<p>".htmlspecialchars($anuncio['descripcion'])."</p>";
-            echo "<span style='font-size:12px; color:gray;'>".$anuncio['fecha']."</span>";
-            echo "</div>";
+            echo "
+            <div class='anuncio-card'>
+                <div class='anuncio-header'>
+                    <h3 class='anuncio-titulo'>".htmlspecialchars($anuncio['titulo'])."</h3>
+                    <span class='anuncio-fecha'>".$anuncio['fecha']."</span>
+                </div>
+
+                <p class='anuncio-descripcion'>".htmlspecialchars($anuncio['descripcion'])."</p>
+            </div>
+            ";
         }
     } else {
-        echo "<p>No hay anuncios todavía.</p>";
+        echo "<p class='sin-anuncios'>No hay anuncios todavía.</p>";
     }
+
+    echo "</div>";
 }
 
 // =========================
