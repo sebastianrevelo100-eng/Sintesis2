@@ -11,7 +11,7 @@ include 'conexion.php';
 
 # Si no ets professor no pots crear una classe
 if(!isset($_SESSION['id']) || $_SESSION['rol'] != 'profesor'){
-    die("<p class='error'>No tienes permiso para crear clases</p>");
+    die("<p class='error'>No tens permís per crear classes</p>");
 }
 
 # Comprova si les dades del formulari han arribat
@@ -29,22 +29,22 @@ if(isset($_POST['nombre'])){
     if($conn->query($sql) === TRUE){
         echo "<div class='resultado'>";
 
-        echo "<h2 class='success'>Clase creada!</h2>";
+        echo "<h2 class='success'>Classe creada!</h2>";
         echo "<div class='codigo-container'>";
-        echo "<p class='codigo'>Código: <strong id='codigoClase'>$codigo</strong></p>";
+        echo "<p class='codigo'>Codi: <strong id='codigoClase'>$codigo</strong></p>";
         echo "<button class='boton-copiar' onclick='copiarCodigo()'>Copiar</button>";
         echo "</div>";
 
-        echo "<a class='boton-link' href='../clases.php?id=".$conn->insert_id."'>Ir a la clase</a>";
-        echo "<a class='boton-link secundario' href='../mainPage.php'>Volver al menú</a>";
+        echo "<a class='boton-link' href='../clases.php?id=".$conn->insert_id."'>Anar a la classe</a>";
+        echo "<a class='boton-link secundario' href='../mainPage.php'>Tornar al menú</a>";
 
         echo "</div>";
     } else {
-        echo "<p class='error'>Error al crear clase</p>";
+        echo "<p class='error'>Error en crear la classe</p>";
     }
 
 } else {
-    echo "<p class='error'>Por favor completa el formulario</p>";
+    echo "<p class='error'>Si us plau completa el formulari</p>";
 }
 ?>
 <script>
@@ -53,7 +53,7 @@ function copiarCodigo() {
 
     if (navigator.clipboard) {
         navigator.clipboard.writeText(codigo)
-            .then(() => alert("Código copiado: " + codigo))
+            .then(() => alert("Codi copiat: " + codigo))
             .catch(() => copiarFallback(codigo));
     } else {
         copiarFallback(codigo);
