@@ -78,7 +78,7 @@ if($tab == "anuncios"){
         echo '
         <div class="anuncio-form-container">
             <h3 class="subtitulo">Crear anunci</h3>
-            <form class="anuncio-form" action="php/crear_anuncio.php" method="POST">
+            <form class="anuncio-form" action="php/crearAnuncio.php" method="POST">
                 <input type="hidden" name="clase_id" value="'.$clase_id.'">
                 
                 <input class="input-anuncio" type="text" name="titulo" placeholder="Títol de l\'anunci" required>

@@ -314,6 +314,10 @@ body {
 /* CONTENEDOR FORM */
 .anuncio-form-container {
     margin-bottom: 20px;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+
 }
 
 /* INPUT */
@@ -323,7 +327,7 @@ body {
     border-radius: 10px;
     border: 1px solid #667eea;
     background: rgba(255,255,255,0.1);
-    color: white;
+    color: black;
     margin-bottom: 10px;
 }
 
@@ -362,10 +366,10 @@ body {
 
 /* CARD */
 .anuncio-card {
-    background: rgba(255,255,255,0.08);
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, rgb(102, 126, 234), rgb(118, 75, 162));
+    padding: 20px;
+    border-radius: 10px;
 }
 
 /* HEADER */
